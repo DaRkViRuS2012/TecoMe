@@ -1,0 +1,42 @@
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "75b-un-37c"; */
+"75b-un-37c.normalTitle" = "Sign in";
+
+/* Class = "UITextField"; placeholder = "User name"; ObjectID = "BGf-p0-pQJ"; */
+"BGf-p0-pQJ.placeholder" = "User name";
+
+/* Class = "UILabel"; text = "www.tecomat.com"; ObjectID = "C0n-Wy-5BZ"; */
+"C0n-Wy-5BZ.text" = "www.tecomat.com";
+
+/* Class = "UITextField"; placeholder = "Server"; ObjectID = "Der-uH-2dP"; */
+"Der-uH-2dP.placeholder" = "Server";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "KtZ-2b-Kcc"; */
+"KtZ-2b-Kcc.text" = "Title";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Kw5-Ko-jJ4"; */
+"Kw5-Ko-jJ4.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Language"; ObjectID = "Mn9-6F-Tkr"; */
+"Mn9-6F-Tkr.normalTitle" = "Language";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PKz-BS-2Uz"; */
+"PKz-BS-2Uz.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Teco a.s-m.e.group"; ObjectID = "X1L-cA-sBL"; */
+"X1L-cA-sBL.text" = "Teco a.s-m.e.group";
+
+/* Class = "UILabel"; text = "Tap to listen"; ObjectID = "Yaq-V9-6SP"; */
+"Yaq-V9-6SP.text" = "Tap to listen";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "ZwK-cW-sUm"; */
+"ZwK-cW-sUm.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Please select your command"; ObjectID = "ol4-8b-BWa"; */
+"ol4-8b-BWa.text" = "Please select your command";
+
+/* Class = "UITextField"; placeholder = "Port"; ObjectID = "sJd-4P-1Me"; */
+"sJd-4P-1Me.placeholder" = "Port";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "vec-sB-1Pm"; */
+"vec-sB-1Pm.normalTitle" = "Cancel";
