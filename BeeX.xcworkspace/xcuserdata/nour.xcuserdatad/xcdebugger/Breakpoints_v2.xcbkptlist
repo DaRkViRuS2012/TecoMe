@@ -9,29 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BeeX/Managers/ApiManager.swift"
-            timestampString = "545398270.311215"
+            filePath = "BeeX/Controllers/ViewController.swift"
+            timestampString = "545497942.925838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "invoke(userId:words:completionBlock:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BeeX/Managers/ApiManager.swift"
-            timestampString = "545398270.338539"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "invoke(userId:words:completionBlock:)"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
+            landmarkName = "invoke(words:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

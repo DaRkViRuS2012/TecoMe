@@ -17,7 +17,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var tapButton: UIButton!
     @IBOutlet weak var logoBTN: UIButton!
     
-   
+    var channel:AVAudioNodeBus = 1
     private var listening = false
   //  private var speechRecognizer: SFSpeechRecognizer?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -29,6 +29,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     var selectedCommand:Command?
     var timer:Timer?
     
+    @IBOutlet weak var testTextFeild: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commandsView: UIView!
     
@@ -58,7 +59,9 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         self.performSegue(withIdentifier: "settingSegue", sender: nil)
     }
     
-    @IBAction func viewTapped(_ sender: Any) {
+    
+    @objc func tap(){
+        
         askMicPermission(completion: { (granted, message) in
             DispatchQueue.main.async {
                 if self.audioEngine.isRunning {
@@ -70,13 +73,13 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                     // Setup the text and start recording
                     
                     self.listening = true
-//                    self.microphoneImageView.image = UIImage(named: "Microphone Filled")
+                    //                    self.microphoneImageView.image = UIImage(named: "Microphone Filled")
                     self.logoBTN.isSelected = true
                     self.noteLabel.text = message
-                    self.navSettingButton.isEnabled = false
+                    self.showSettingNavCloseButton = false
                     self.view.isUserInteractionEnabled = false
                     if granted {
-                        self.tapButton.isEnabled = false
+                        //   self.tapButton.isEnabled = false
                         self.stopListening()
                         
                         self.startListening()
@@ -84,6 +87,15 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 }
             }
         })
+    }
+    
+    
+    @IBAction func viewTapped(_ sender: Any) {
+        
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(tap), object: nil)
+        self.perform(#selector(tap), with: nil, afterDelay: 0.5)
+        
+       
     }
     
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
@@ -191,7 +203,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                     self.invoke(words: msg)
                 }
                 self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
+                inputNode.removeTap(onBus: self.channel)
                 
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
@@ -210,7 +222,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 
                 print(error?.localizedDescription)
                 self.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
+                inputNode.removeTap(onBus: self.channel)
                 
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
@@ -219,10 +231,10 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             }
         })
         
-        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        let recordingFormat = inputNode.outputFormat(forBus: channel)
     
             if self.recognitionRequest != nil{
-            inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+            inputNode.installTap(onBus: self.channel, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
                 self.recognitionRequest?.append(buffer)
                 }
                 
@@ -244,8 +256,8 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     private func stopListening() {
         self.audioEngine.stop()
         self.recognitionRequest?.endAudio()
-        audioEngine.inputNode.removeTap(onBus: 0)
-        audioEngine.outputNode.removeTap(onBus: 0)
+        audioEngine.inputNode.removeTap(onBus: channel)
+        audioEngine.outputNode.removeTap(onBus: channel)
         self.view.isUserInteractionEnabled = true
         self.recognitionRequest = nil
         self.recognitionTask = nil
@@ -283,22 +295,59 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
 
     func endlistening(){
         
-        self.tapButton.isEnabled = true
+     //   self.tapButton.isEnabled = true
         self.listening = false
         self.audioEngine.stop()
         self.recognitionRequest?.endAudio()
         //                    self.microphoneImageView.image = UIImage(named: "Microphone")
         self.logoBTN.isSelected = false
-        self.navSettingButton.isEnabled = true
+        self.showSettingNavCloseButton = true
         
     }
+    
+    
+    @IBAction func send(_ sender: UIButton) {
+        if let word = testTextFeild.text{
+            invoke(words:word)
+        }
+    }
+    
+    
+    func getWords(word:String)->String{
+        let letters = CharacterSet.letters
+        var str = ""
+        for c in word.unicodeScalars{
+            
+            if letters.contains(c){
+                str.append(Character(c))
+            }else{
+                str.append(",")
+            }
+            
+        }
+        
+        return str
+        
+    }
+    
     
     func invoke(words:String){
         
         if !words.isEmpty,let id = DataStore.shared.me?.UID{
             
             self.showActivityLoader(true)
-            let newWords = words.replacingOccurrences(of: " ", with: ",").lowercased()
+            
+            var wordsarr = getWords(word: words)
+        
+            
+            
+            var newWords = wordsarr;
+            
+//            for word in wordsarr {
+//                newWords.append(word)
+//                newWords.append(",")
+//            }
+                //words.replacingOccurrences(of: " ", with: ",").lowercased()
             ApiManager.shared.invoke(userId: id, words: newWords, completionBlock: { (success, error, result) in
                 self.showActivityLoader(false)
                 

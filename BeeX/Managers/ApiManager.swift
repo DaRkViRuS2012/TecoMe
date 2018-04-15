@@ -51,7 +51,7 @@ class ApiManager: NSObject {
     
 
     let baseURL = "https://www.lutfi-co.com/smart/api/api.php"
-    let iosbaseURL = "https://www.lutfi-co.com/smart/api/api.php"
+    let iosbaseURL = "https://www.lutfi-co.com/smart/api/iosapi.php"
     
     //MARK: Shared Instance
     static let shared: ApiManager = ApiManager()
@@ -173,7 +173,7 @@ class ApiManager: NSObject {
         let signInURL = "\(iosbaseURL)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         
-        let parameters : [String : Any] = [
+        let parameters : [String : String] = [
             "process":url.invoke.process,
             "userId": userId,
             "words": words,
@@ -182,12 +182,69 @@ class ApiManager: NSObject {
         print(parameters)
         var request1 = URLRequest(url: URL(string: signInURL!)!)
         request1.httpMethod = "POST"
-        request1.timeoutInterval = 50
         
-     
+    // start of do
+        do{
+        
+        var request = try URLEncoding().encode(request1, with: parameters)
+        let httpBody = NSString(data: request.httpBody!, encoding: String.Encoding.utf8.rawValue)!
+        request.httpBody = httpBody.replacingOccurrences(of: "%5B%5D=", with: "=").data(using: .utf8)
+       // request1.setValue("charset=utf-8", forHTTPHeaderField: "Content-Type")
+       // request1.httpBody = try! JSONSerialization.data(withJSONObject: parameters)
+      
+//        do {
+//             Alamofire.ParameterEncoding.encode(.)
+//            let alamofireRequest = try Alamofire.URLEncoding().encode(request1 as URLRequestConvertible, with: parameters)
+//            Alamofire.request(alamofireRequest).responseString  { (responseObject) -> Void in
+//                print(responseObject)
+//                if responseObject.result.isSuccess {
+//                    let jsonResponse = JSON(responseObject.result.value!)
+//                    print(jsonResponse)
+//                    if let code = responseObject.response?.statusCode, code >= 400 {
+//                        let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
+//                        completionBlock(false , serverError, [])
+//                    } else {
+//                        // parse response to data model >> user object
+//                        if let dic = jsonResponse.rawString()?.data(using: String.Encoding.utf8){
+//                            let json = JSON(dic)
+//                            if let code = json["success"].int ,code == 10{
+//                                var result:[Command] = []
+//                                if let array = json["commands"].array{
+//
+//                                    result = array.map{Command(json:$0)}
+//                                }
+//
+//                                completionBlock(true , nil,result)
+//
+//
+//                            }else{
+//
+//                                let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
+//                                completionBlock(false , serverError, [])
+//
+//                            }
+//
+//                        }
+//
+//                    }
+//                }
+//                // Network error request time out or server error with no payload
+//                if responseObject.result.isFailure {
+//                    if let code = responseObject.response?.statusCode, code >= 400 {
+//                        completionBlock(false, ServerError.unknownError, [])
+//                    } else {
+//                        completionBlock(false, ServerError.connectionError, [])
+//                    }
+//                }
+//            }
+//        } catch {
+//
+//        }
+//
         
         // build request
-        Alamofire.request(signInURL!, method: .post, parameters: parameters).responseString  { (responseObject) -> Void in
+        Alamofire.request(signInURL!,method:.post,parameters:parameters).responseString  { (responseObject) -> Void in
+          //  Alamofire.request(request).responseString(encoding: String.Encoding.utf8)  { (responseObject) -> Void in
             print(responseObject)
             if responseObject.result.isSuccess {
                 let jsonResponse = JSON(responseObject.result.value!)
@@ -202,22 +259,22 @@ class ApiManager: NSObject {
                     if let code = json["success"].int ,code == 10{
                         var result:[Command] = []
                         if let array = json["commands"].array{
-                            
+
                             result = array.map{Command(json:$0)}
                         }
-                        
+
                         completionBlock(true , nil,result)
-                        
-                        
+
+
                     }else{
-                        
+
                         let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
                         completionBlock(false , serverError, [])
-                        
+
                         }
-                        
+
                     }
-                    
+
                 }
             }
             // Network error request time out or server error with no payload
@@ -228,6 +285,11 @@ class ApiManager: NSObject {
                     completionBlock(false, ServerError.connectionError, [])
                 }
             }
+        }
+            
+            // end of Do
+        }catch{
+            print(error)
         }
     }
     
