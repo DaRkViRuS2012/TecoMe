@@ -250,6 +250,7 @@ class ApiManager: NSObject {
                 let jsonResponse = JSON(responseObject.result.value!)
                 print(jsonResponse)
                 if let code = responseObject.response?.statusCode, code >= 400 {
+                    
                     let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
                     completionBlock(false , serverError, [])
                 } else {
@@ -262,13 +263,14 @@ class ApiManager: NSObject {
 
                             result = array.map{Command(json:$0)}
                         }
+                        
 
                         completionBlock(true , nil,result)
 
 
                     }else{
 
-                        let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
+                        let serverError = ServerError(json: json) ?? ServerError.unknownError
                         completionBlock(false , serverError, [])
 
                         }

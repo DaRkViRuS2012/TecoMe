@@ -36,10 +36,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showSettingNavCloseButton = true
-        // Initialize SFSpeechRecognizer
-        
-   //     speechRecognizer?.delegate = self
-        
+
         tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
@@ -47,15 +44,9 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       // self.speechRecognizer = nil
-     //   speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: AppConfig.langCode))
-    //    print(speechRecognizer?.isAvailable)
-      //  print(speechRecognizer?.locale)
-        
     }
+    
     override func settingButtonAction() {
-    //    self.stopListening()
-      //  self.speechRecognizer = nil
         self.performSegue(withIdentifier: "settingSegue", sender: nil)
     }
     
@@ -80,9 +71,10 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                     self.view.isUserInteractionEnabled = false
                     if granted {
                         //   self.tapButton.isEnabled = false
+                      //  self.finalizeListening()
                         self.stopListening()
-                        
                         self.startListening()
+                        self.restartSpeechTimer()
                     }
                 }
             }
@@ -172,8 +164,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         let inputNode = audioEngine.inputNode
-        
-       // self.restartSpeechTimer()
+     
         
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
@@ -201,14 +192,10 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 
                 if let msg = result?.bestTranscription.formattedString{
                     self.invoke(words: msg)
+                }else{
+                    self.finalizeListening()
                 }
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: self.channel)
-                
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
-                
-                self.noteLabel.text = "Tap to listen"
+            
                 //self.stopListening()
                 
             }  else if error == nil{
@@ -267,24 +254,8 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     
      @objc func restartSpeechTimer() {
         timer?.invalidate()
-     //   self.listening = true
-     //self.listening = true
         timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
-//            if let msg = self.noteLabel.text{
-//                self.invoke(words: msg)
-//            }
-//            self.audioEngine.stop()
-//            self.audioEngine.inputNode.removeTap(onBus: 0)
-//
-//            self.recognitionRequest = nil
-//            self.recognitionTask = nil
-//
-//            self.noteLabel.text = "Tap to listen"
-//            self.stopListening()
-            
-         
-            
-            
+
             if self.audioEngine.isRunning{
                 self.endlistening()
             }
@@ -302,6 +273,18 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         //                    self.microphoneImageView.image = UIImage(named: "Microphone")
         self.logoBTN.isSelected = false
         self.showSettingNavCloseButton = true
+        
+    }
+    
+    
+    func finalizeListening(){
+        
+        self.audioEngine.stop()
+        self.audioEngine.inputNode.removeTap(onBus: self.channel)
+        self.recognitionRequest = nil
+        self.recognitionTask = nil
+        
+        self.noteLabel.text = "Tap to listen"
         
     }
     
@@ -337,20 +320,13 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             
             self.showActivityLoader(true)
             
-            var wordsarr = getWords(word: words)
-        
+            let wordsarr = getWords(word: words)
+    
+            let newWords = wordsarr;
             
-            
-            var newWords = wordsarr;
-            
-//            for word in wordsarr {
-//                newWords.append(word)
-//                newWords.append(",")
-//            }
-                //words.replacingOccurrences(of: " ", with: ",").lowercased()
             ApiManager.shared.invoke(userId: id, words: newWords, completionBlock: { (success, error, result) in
                 self.showActivityLoader(false)
-                
+                self.finalizeListening()
                 if success{
                     
                     self.commands = result
@@ -365,7 +341,6 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 
                 if error != nil{
                     if let msg = error?.message {
-                        
                         self.showMessage(message: msg, type: .error)
                         
                     }
@@ -412,7 +387,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                         print(response)
                     }
                     case .failure(let error):
-                    print(error)
+                        self.showMessage(message: error.localizedDescription, type: .error)
                     }
                 }
                 
@@ -424,10 +399,10 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                     print(response)
                 }
             case .failure(let error):
-                print(error)
+                self.showMessage(message: error.localizedDescription, type: .error)
             }
             case .failure(let error):
-                print(error)
+                self.showMessage(message: error.localizedDescription, type: .error)
             }
         }else{
             self.showMessage(message: "make sure to enter server and port in the setting", type: .error)
