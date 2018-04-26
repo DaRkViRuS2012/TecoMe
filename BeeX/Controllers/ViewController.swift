@@ -9,6 +9,7 @@
 import UIKit
 import Speech
 import SwiftSocket
+import AVFoundation
 
 class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     
@@ -16,6 +17,9 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var microphoneImageView: UIImageView!
     @IBOutlet weak var tapButton: UIButton!
     @IBOutlet weak var logoBTN: UIButton!
+    
+    var bombSoundEffect: AVAudioPlayer?
+    
     
     var channel:AVAudioNodeBus = 1
     private var listening = false
@@ -28,7 +32,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     var commands:[Command] = []
     var selectedCommand:Command?
     var timer:Timer?
-    
+    var Stoptimer:Timer?
     @IBOutlet weak var testTextFeild: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commandsView: UIView!
@@ -70,11 +74,12 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                     self.showSettingNavCloseButton = false
                     self.view.isUserInteractionEnabled = false
                     if granted {
-                        //   self.tapButton.isEnabled = false
-                      //  self.finalizeListening()
+                        self.tapButton.isEnabled = false
+                    //    self.finalizeListening()
                         self.stopListening()
+                        
                         self.startListening()
-                        self.restartSpeechTimer()
+                        self.StopSpeechTimer()
                     }
                 }
             }
@@ -83,7 +88,6 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     
     
     @IBAction func viewTapped(_ sender: Any) {
-        
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(tap), object: nil)
         self.perform(#selector(tap), with: nil, afterDelay: 0.5)
         
@@ -191,30 +195,34 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             if isFinal {
                 
                 if let msg = result?.bestTranscription.formattedString{
+                    self.finalizeListening()
                     self.invoke(words: msg)
                 }else{
+                    
                     self.finalizeListening()
                 }
             
                 //self.stopListening()
                 
             }  else if error == nil{
-
+                
                 self.restartSpeechTimer()
 
             }
             
-            if error != nil{
-            
+            if error != nil || self.listening == false{
+          //      self.playErrorSound()
                 
                 print(error?.localizedDescription)
-                self.audioEngine.stop()
-                inputNode.removeTap(onBus: self.channel)
-                
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
-                
-                self.noteLabel.text = "Tap to listen"
+//                self.audioEngine.stop()
+//                inputNode.removeTap(onBus: self.channel)
+//
+//                self.recognitionRequest = nil
+//                self.recognitionTask = nil
+//
+//                self.noteLabel.text = "Tap to listen"
+             //   self.channel += 1
+                self.finalizeListening()
             }
         })
         
@@ -241,20 +249,43 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
      Stop listening to audio and speech recognition
      */
     private func stopListening() {
+        
+        audioEngine.inputNode.removeTap(onBus: channel)
+        audioEngine.inputNode.reset()
         self.audioEngine.stop()
         self.recognitionRequest?.endAudio()
-        audioEngine.inputNode.removeTap(onBus: channel)
-        audioEngine.outputNode.removeTap(onBus: channel)
-        self.view.isUserInteractionEnabled = true
+        self.recognitionTask?.cancel()
         self.recognitionRequest = nil
         self.recognitionTask = nil
+        
+        self.tapButton.isEnabled = true
+        
+        
+
+//        audioEngine.outputNode.removeTap(onBus: channel)
+        self.view.isUserInteractionEnabled = true
+      
+        
+        
+        /*
+         
+         [inputNode removeTapOnBus:0];
+         [inputNode reset];
+         [audioEngine stop];
+         [recognitionRequest endAudio];
+         [recognitionTask cancel];
+         recognitionTask = nil;
+         recognitionRequest = nil;
+         
+         */
     }
     
     
     
      @objc func restartSpeechTimer() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { (timer) in
+        Stoptimer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (timer) in
 
             if self.audioEngine.isRunning{
                 self.endlistening()
@@ -263,22 +294,42 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             })
 
     }
+    
+    
+    @objc func StopSpeechTimer() {
+        Stoptimer?.invalidate()
+        Stoptimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+            
+            if self.audioEngine.isRunning{
+                self.endlistening()
+            }
+            
+        })
+        
+    }
 
     func endlistening(){
-        
-     //   self.tapButton.isEnabled = true
+        timer?.invalidate()
+        Stoptimer?.invalidate()
+        self.tapButton.isEnabled = true
         self.listening = false
         self.audioEngine.stop()
+        self.audioEngine.inputNode.removeTap(onBus: self.channel)
         self.recognitionRequest?.endAudio()
         //                    self.microphoneImageView.image = UIImage(named: "Microphone")
-        self.logoBTN.isSelected = false
+     //   self.logoBTN.isSelected = false
         self.showSettingNavCloseButton = true
         
     }
     
     
+    
+    
     func finalizeListening(){
         
+        timer?.invalidate()
+        Stoptimer?.invalidate()
+        self.logoBTN.isSelected = false
         self.audioEngine.stop()
         self.audioEngine.inputNode.removeTap(onBus: self.channel)
         self.recognitionRequest = nil
@@ -296,19 +347,56 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     }
     
     
+    func playOkSound(){
+        let path = Bundle.main.path(forResource: "ok.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
+            bombSoundEffect?.setVolume(50, fadeDuration: 0)
+            bombSoundEffect?.play()
+        } catch {
+            // couldn't load file :(
+        }
+
+        
+    }
+    
+    func playErrorSound(){
+        let path = Bundle.main.path(forResource: "error.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
+            bombSoundEffect?.setVolume(50, fadeDuration: 0)
+            bombSoundEffect?.play()
+        } catch {
+            // couldn't load file :(
+        }
+        
+        
+    }
+    
+    
     func getWords(word:String)->String{
         let letters = CharacterSet.letters
         var str = ""
+        var ok = false
         for c in word.unicodeScalars{
             
             if letters.contains(c){
+                ok = true
                 str.append(Character(c))
-            }else{
+            }else if ok{
                 str.append(",")
             }
             
         }
-        
+//        if str.length > 0{
+//        let endIndex = str.index(str.endIndex, offsetBy: -1)
+//        str = str.substring(to: endIndex)
+//
+//        }
         return str
         
     }
@@ -317,7 +405,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     func invoke(words:String){
         
         if !words.isEmpty,let id = DataStore.shared.me?.UID{
-            
+            self.tapButton.isEnabled = false
             self.showActivityLoader(true)
             
             let wordsarr = getWords(word: words)
@@ -325,10 +413,11 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             let newWords = wordsarr;
             
             ApiManager.shared.invoke(userId: id, words: newWords, completionBlock: { (success, error, result) in
+                self.tapButton.isEnabled = true
                 self.showActivityLoader(false)
                 self.finalizeListening()
                 if success{
-                    
+                    //self.playOkSound()
                     self.commands = result
                     if result.count == 1{
                         self.selectedCommand = result[0]
@@ -340,6 +429,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 }
                 
                 if error != nil{
+                    self.playErrorSound()
                     if let msg = error?.message {
                         self.showMessage(message: msg, type: .error)
                         
@@ -380,6 +470,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 switch client.send(string: "set:\(order)\r\n" ) {
                    case .success:
                     print("ok")
+                    self.playOkSound()
                     self.showMessage(message: "Done".localized, type: .success)
                     guard let data = client.read(1024*10) else { return }
                     
@@ -387,6 +478,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                         print(response)
                     }
                     case .failure(let error):
+                        self.playErrorSound()
                         self.showMessage(message: error.localizedDescription, type: .error)
                     }
                 }
@@ -399,12 +491,15 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                     print(response)
                 }
             case .failure(let error):
+                self.playErrorSound()
                 self.showMessage(message: error.localizedDescription, type: .error)
             }
             case .failure(let error):
+                self.playErrorSound()
                 self.showMessage(message: error.localizedDescription, type: .error)
             }
         }else{
+            self.playErrorSound()
             self.showMessage(message: "make sure to enter server and port in the setting", type: .error)
             
         }
@@ -419,6 +514,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         case .success:
             return readResponse(from: client)
         case .failure(let error):
+            self.playErrorSound()
            print(error)
             return nil
         }

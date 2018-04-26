@@ -226,13 +226,13 @@ class AbstractController: UIViewController, UITextFieldDelegate, UIGestureRecogn
     // MARK: Show toast message
     /// Show toast message with key and type
     func showMessage(message: String, type: MessageType) {
-        if type != .success {
-            let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-            //We add buttons to the alert controller by creating UIAlertActions:
-            let actionOk = UIAlertAction(title: "Ok".localized, style: .default, handler: nil) //You can use a block here to handle a press on this button
-            alertController.addAction(actionOk)
-            self.present(alertController, animated: true, completion: nil)
-        } else {
+//        if type != .success {
+//            let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+//            //We add buttons to the alert controller by creating UIAlertActions:
+//            let actionOk = UIAlertAction(title: "Ok".localized, style: .default, handler: nil) //You can use a block here to handle a press on this button
+//            alertController.addAction(actionOk)
+//            self.present(alertController, animated: true, completion: nil)
+//        } else {
             // toast view measurments
             let toastOffset = CGFloat(48)
             let toastHeight = CGFloat(104)
@@ -261,7 +261,7 @@ class AbstractController: UIViewController, UITextFieldDelegate, UIGestureRecogn
             toastLabel.sizeToFit()
             // present the toast with custom view
             self.view.showToast(toastView, duration: 2.0, position: .center, completion: nil)
-        }
+        
     }
     
     @objc func toastButtonAction(){

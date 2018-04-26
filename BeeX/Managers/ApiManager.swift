@@ -51,7 +51,7 @@ class ApiManager: NSObject {
     
 
     let baseURL = "https://www.lutfi-co.com/smart/api/api.php"
-    let iosbaseURL = "https://www.lutfi-co.com/smart/api/iosapi.php"
+    let iosbaseURL = "https://www.lutfi-co.com/smart/api/api.php"
     
     //MARK: Shared Instance
     static let shared: ApiManager = ApiManager()

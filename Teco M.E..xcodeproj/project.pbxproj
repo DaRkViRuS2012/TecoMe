@@ -84,6 +84,8 @@
 		14B5E86B207DD96900067ECF /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E86A207DD96900067ECF /* Command.swift */; };
 		14B5E86E207E082500067ECF /* CDVSpeechRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E86C207E082400067ECF /* CDVSpeechRecognition.swift */; };
 		14B5E86F207E082500067ECF /* CDVSpeechRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E86D207E082500067ECF /* CDVSpeechRecognitionViewController.swift */; };
+		14DDDE5E208E1D8400A4A403 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14DDDE5C208E1D8400A4A403 /* error.mp3 */; };
+		14DDDE5F208E1D8400A4A403 /* ok.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14DDDE5D208E1D8400A4A403 /* ok.mp3 */; };
 		7797591FAA9D237F843A2ECA /* Pods_BeeX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F042F4F0E5B341DD3A870BB6 /* Pods_BeeX.framework */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +170,8 @@
 		14B5E86A207DD96900067ECF /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		14B5E86C207E082400067ECF /* CDVSpeechRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDVSpeechRecognition.swift; sourceTree = "<group>"; };
 		14B5E86D207E082500067ECF /* CDVSpeechRecognitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDVSpeechRecognitionViewController.swift; sourceTree = "<group>"; };
+		14DDDE5C208E1D8400A4A403 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
+		14DDDE5D208E1D8400A4A403 /* ok.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ok.mp3; sourceTree = "<group>"; };
 		39B206AAF4DFE0876D36C1D6 /* Pods-BeeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeX.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeeX/Pods-BeeX.release.xcconfig"; sourceTree = "<group>"; };
 		762433DE62A4423A6AD518F0 /* Pods-BeeX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeeX/Pods-BeeX.debug.xcconfig"; sourceTree = "<group>"; };
 		F042F4F0E5B341DD3A870BB6 /* Pods_BeeX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +256,8 @@
 		1437C099207509F500FCA384 /* BeeX */ = {
 			isa = PBXGroup;
 			children = (
+				14DDDE5D208E1D8400A4A403 /* ok.mp3 */,
+				14DDDE5C208E1D8400A4A403 /* error.mp3 */,
 				1437C09A207509F500FCA384 /* AppDelegate.swift */,
 				1437C17920751F4C00FCA384 /* Controllers */,
 				1437C1762075150200FCA384 /* Globals */,
@@ -462,11 +468,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14DDDE5F208E1D8400A4A403 /* ok.mp3 in Resources */,
 				1437C0AD20750A2E00FCA384 /* Info.plist in Resources */,
 				1437C17120750E1A00FCA384 /* DroidKufiRegular.ttf in Resources */,
 				1437C0A5207509F500FCA384 /* LaunchScreen.storyboard in Resources */,
 				1437C17220750E1A00FCA384 /* OpenSansSemiBold.ttf in Resources */,
 				1437C17320750E1A00FCA384 /* OpenSansBold.ttf in Resources */,
+				14DDDE5E208E1D8400A4A403 /* error.mp3 in Resources */,
 				1437C0A2207509F500FCA384 /* Assets.xcassets in Resources */,
 				142344D320794F39000718AB /* Countries.bundle in Resources */,
 				1437C0A0207509F500FCA384 /* Main.storyboard in Resources */,

@@ -28,7 +28,7 @@ class ActionLogout:Action
             
             ActionShowStart.execute()
         })
-        let alert = UIAlertController(title: "".localized, message: "you are about tot logout!".localized, preferredStyle: .alert)
+        let alert = UIAlertController(title: "".localized, message: "you are about to logout!".localized, preferredStyle: .alert)
         alert.addAction(okButton)
         alert.addAction(cancelButton)
         if let controller = UIApplication.visibleViewController()
