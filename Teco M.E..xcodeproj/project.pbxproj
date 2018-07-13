@@ -79,6 +79,9 @@
 		1437C1782075174B00FCA384 /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437C1772075174B00FCA384 /* RecordingViewController.swift */; };
 		1437C1802075282F00FCA384 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437C17E2075282F00FCA384 /* LoginViewController.swift */; };
 		1437C1812075282F00FCA384 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1437C17F2075282F00FCA384 /* StartViewController.swift */; };
+		149D3ECD20F3ECE6007E2EE9 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D3ECA20F3ECE5007E2EE9 /* Result.swift */; };
+		149D3ECE20F3ECE6007E2EE9 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D3ECB20F3ECE5007E2EE9 /* Commands.swift */; };
+		149D3ECF20F3ECE6007E2EE9 /* response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149D3ECC20F3ECE5007E2EE9 /* response.swift */; };
 		14B5E867207D2B6200067ECF /* Languge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E866207D2B6200067ECF /* Languge.swift */; };
 		14B5E869207D330300067ECF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E868207D330300067ECF /* SettingsViewController.swift */; };
 		14B5E86B207DD96900067ECF /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E86A207DD96900067ECF /* Command.swift */; };
@@ -86,6 +89,7 @@
 		14B5E86F207E082500067ECF /* CDVSpeechRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5E86D207E082500067ECF /* CDVSpeechRecognitionViewController.swift */; };
 		14DDDE5E208E1D8400A4A403 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14DDDE5C208E1D8400A4A403 /* error.mp3 */; };
 		14DDDE5F208E1D8400A4A403 /* ok.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14DDDE5D208E1D8400A4A403 /* ok.mp3 */; };
+		14FBEF892093478500ACDE89 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FBEF882093478500ACDE89 /* TestViewController.swift */; };
 		7797591FAA9D237F843A2ECA /* Pods_BeeX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F042F4F0E5B341DD3A870BB6 /* Pods_BeeX.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +169,9 @@
 		1437C17F2075282F00FCA384 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartViewController.swift; path = ../../../../../../Wardah/Wardah/Classes/Controllers/Start/StartViewController.swift; sourceTree = "<group>"; };
 		1473536420815E15003B7769 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		1473536520815E15003B7769 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		149D3ECA20F3ECE5007E2EE9 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = SOURCE_ROOT; };
+		149D3ECB20F3ECE5007E2EE9 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = SOURCE_ROOT; };
+		149D3ECC20F3ECE5007E2EE9 /* response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = response.swift; sourceTree = SOURCE_ROOT; };
 		14B5E866207D2B6200067ECF /* Languge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languge.swift; sourceTree = "<group>"; };
 		14B5E868207D330300067ECF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		14B5E86A207DD96900067ECF /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
@@ -172,6 +179,7 @@
 		14B5E86D207E082500067ECF /* CDVSpeechRecognitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDVSpeechRecognitionViewController.swift; sourceTree = "<group>"; };
 		14DDDE5C208E1D8400A4A403 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
 		14DDDE5D208E1D8400A4A403 /* ok.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ok.mp3; sourceTree = "<group>"; };
+		14FBEF882093478500ACDE89 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		39B206AAF4DFE0876D36C1D6 /* Pods-BeeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeX.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeeX/Pods-BeeX.release.xcconfig"; sourceTree = "<group>"; };
 		762433DE62A4423A6AD518F0 /* Pods-BeeX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeeX/Pods-BeeX.debug.xcconfig"; sourceTree = "<group>"; };
 		F042F4F0E5B341DD3A870BB6 /* Pods_BeeX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,6 +353,9 @@
 		1437C12420750C1600FCA384 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				149D3ECB20F3ECE5007E2EE9 /* Commands.swift */,
+				149D3ECC20F3ECE5007E2EE9 /* response.swift */,
+				149D3ECA20F3ECE5007E2EE9 /* Result.swift */,
 				1437C12F20750C1600FCA384 /* AppUser.swift */,
 				1437C13920750C1600FCA384 /* BaseModel.swift */,
 				14B5E866207D2B6200067ECF /* Languge.swift */,
@@ -385,6 +396,7 @@
 				1437C1772075174B00FCA384 /* RecordingViewController.swift */,
 				1437C09C207509F500FCA384 /* ViewController.swift */,
 				14B5E868207D330300067ECF /* SettingsViewController.swift */,
+				14FBEF882093478500ACDE89 /* TestViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -554,6 +566,7 @@
 			files = (
 				1437C10620750A5000FCA384 /* UIApplication.swift in Sources */,
 				1437C0B820750A4A00FCA384 /* ApiManager.swift in Sources */,
+				14FBEF892093478500ACDE89 /* TestViewController.swift in Sources */,
 				1437C0F520750A4F00FCA384 /* XUIView.swift in Sources */,
 				14B5E86E207E082500067ECF /* CDVSpeechRecognition.swift in Sources */,
 				14B5E867207D2B6200067ECF /* Languge.swift in Sources */,
@@ -574,6 +587,7 @@
 				1437C1812075282F00FCA384 /* StartViewController.swift in Sources */,
 				14B5E86F207E082500067ECF /* CDVSpeechRecognitionViewController.swift in Sources */,
 				142344D620794F39000718AB /* PickerViewViewController.swift in Sources */,
+				149D3ECE20F3ECE6007E2EE9 /* Commands.swift in Sources */,
 				1437C10420750A5000FCA384 /* UIViewController.swift in Sources */,
 				1437C0FB20750A4F00FCA384 /* GradiantView.swift in Sources */,
 				1437C12220750A6100FCA384 /* AbstractNibView.swift in Sources */,
@@ -586,7 +600,9 @@
 				1437C0BC20750A4A00FCA384 /* Actions.swift in Sources */,
 				1437C0FE20750A4F00FCA384 /* UIImageViewWithMask.swift in Sources */,
 				1437C17520750E1A00FCA384 /* AppFonts.swift in Sources */,
+				149D3ECF20F3ECE6007E2EE9 /* response.swift in Sources */,
 				1437C10120750A5000FCA384 /* UITabBarItem.swift in Sources */,
+				149D3ECD20F3ECE6007E2EE9 /* Result.swift in Sources */,
 				1437C0FA20750A4F00FCA384 /* UIColor.swift in Sources */,
 				1437C10A20750A5000FCA384 /* DateHelper.swift in Sources */,
 				1437C15020750C1600FCA384 /* AppUser.swift in Sources */,

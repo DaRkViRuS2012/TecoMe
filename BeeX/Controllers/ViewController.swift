@@ -5,7 +5,6 @@
 //  Created by Nour  on 4/4/18.
 //  Copyright © 2018 NourAraar. All rights reserved.
 //
-
 import UIKit
 import Speech
 import SwiftSocket
@@ -19,18 +18,20 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var logoBTN: UIButton!
     
     var bombSoundEffect: AVAudioPlayer?
-    
+    let speechSynthesizer = AVSpeechSynthesizer()
     
     var channel:AVAudioNodeBus = 1
     private var listening = false
-  //  private var speechRecognizer: SFSpeechRecognizer?
+    //  private var speechRecognizer: SFSpeechRecognizer?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     
     private let audioEngine = AVAudioEngine()
-    
-    var commands:[Command] = []
-    var selectedCommand:Command?
+    var results:[Result] = []
+    var selectedResult:Result?
+    var commands:[Commands] = []
+    var selectedCommand:Commands?
+    var response:Response?
     var timer:Timer?
     var Stoptimer:Timer?
     @IBOutlet weak var testTextFeild: UITextField!
@@ -40,7 +41,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showSettingNavCloseButton = true
-
+        
         tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
@@ -60,7 +61,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         askMicPermission(completion: { (granted, message) in
             DispatchQueue.main.async {
                 if self.audioEngine.isRunning {
-                    self.endlistening()
+                 //   self.endlistening()
                     if granted {
                         self.stopListening()
                     }
@@ -72,14 +73,14 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                     self.logoBTN.isSelected = true
                     self.noteLabel.text = message
                     self.showSettingNavCloseButton = false
-                    self.view.isUserInteractionEnabled = false
+                  //  self.view.isUserInteractionEnabled = false
                     if granted {
-                        self.tapButton.isEnabled = false
-                    //    self.finalizeListening()
-                        self.stopListening()
+                    //   self.tapButton.isEnabled = false
+                        //   self.finalizeListening()
+                     //   self.stopListening()
                         
                         self.startListening()
-                        self.StopSpeechTimer()
+                     //   self.restartSpeechTimer(time: 5.0)
                     }
                 }
             }
@@ -91,7 +92,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(tap), object: nil)
         self.perform(#selector(tap), with: nil, afterDelay: 0.5)
         
-       
+        
     }
     
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
@@ -144,7 +145,11 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
      Start listening to audio and try to convert it to text
      */
     private func startListening() {
-        
+        self.StopSpeechTimer()
+
+//        Stoptimer = Timer(timeInterval: 5.0, target: self, selector: #selector(timerEnded), userInfo: nil, repeats: false)
+//        RunLoop.current.add(Stoptimer!, forMode: .commonModes)
+//
         // Clear existing tasks
         if recognitionTask != nil {
             recognitionTask?.cancel()
@@ -156,8 +161,8 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-         //   try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            //   try audioSession.setCategory(AVAudioSessionCategoryRecord)
+          //  try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
             noteLabel.text = "An error occurred when starting audio session."
@@ -168,7 +173,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
         let inputNode = audioEngine.inputNode
-     
+        
         
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
@@ -181,7 +186,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         
         
         recognitionTask = speechRec?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
-            
+            print("processing")
             var isFinal = false
             
             if result != nil {
@@ -201,41 +206,33 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                     
                     self.finalizeListening()
                 }
-            
+                
                 //self.stopListening()
                 
-            }  else if error == nil{
-                
-                self.restartSpeechTimer()
+            }
+            else if error == nil{
+
+                self.restartSpeechTimer(time:1.0)
 
             }
             
             if error != nil || self.listening == false{
-          //      self.playErrorSound()
+                //      self.playErrorSound()
                 
-                print(error?.localizedDescription)
-//                self.audioEngine.stop()
-//                inputNode.removeTap(onBus: self.channel)
-//
-//                self.recognitionRequest = nil
-//                self.recognitionTask = nil
-//
-//                self.noteLabel.text = "Tap to listen"
-             //   self.channel += 1
-                self.finalizeListening()
+               self.finalizeListening()
             }
         })
         
         let recordingFormat = inputNode.outputFormat(forBus: channel)
-    
-            if self.recognitionRequest != nil{
+        
+        if self.recognitionRequest != nil{
             inputNode.installTap(onBus: self.channel, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
                 self.recognitionRequest?.append(buffer)
-                }
-                
             }
             
-    
+        }
+        
+        
         audioEngine.prepare()
         
         do {
@@ -249,7 +246,10 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
      Stop listening to audio and speech recognition
      */
     private func stopListening() {
+        print("stopListing")
         
+        timer?.invalidate()
+        Stoptimer?.invalidate()
         audioEngine.inputNode.removeTap(onBus: channel)
         audioEngine.inputNode.reset()
         self.audioEngine.stop()
@@ -258,13 +258,11 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         self.recognitionRequest = nil
         self.recognitionTask = nil
         
-        self.tapButton.isEnabled = true
-        
-        
-
-//        audioEngine.outputNode.removeTap(onBus: channel)
+        self.listening = false
+        self.ready()
+        //        audioEngine.outputNode.removeTap(onBus: channel)
         self.view.isUserInteractionEnabled = true
-      
+        
         
         
         /*
@@ -280,25 +278,19 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
          */
     }
     
-    
-    
-     @objc func restartSpeechTimer() {
-        timer?.invalidate()
-        Stoptimer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { (timer) in
-
-            if self.audioEngine.isRunning{
-                self.endlistening()
-            }
+    @objc func timerEnded() {
+        // If the audio recording engine is running stop it and remove the SFSpeechRecognitionTask
+        if audioEngine.isRunning {
+            endlistening()
             
-            })
-
+        }
     }
     
-    
-    @objc func StopSpeechTimer() {
+    @objc func restartSpeechTimer(time:Double) {
+        print("restart timer")
+        timer?.invalidate()
         Stoptimer?.invalidate()
-        Stoptimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: time, repeats: false, block: { (timer) in
             
             if self.audioEngine.isRunning{
                 self.endlistening()
@@ -307,7 +299,22 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         })
         
     }
-
+    
+    
+    @objc func StopSpeechTimer() {
+        print("stopTimer")
+        timer?.invalidate()
+        Stoptimer?.invalidate()
+        Stoptimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block: { (timer) in
+            
+            if self.audioEngine.isRunning{
+                self.stopListening()
+            }
+            
+        })
+        
+    }
+    
     func endlistening(){
         timer?.invalidate()
         Stoptimer?.invalidate()
@@ -316,9 +323,14 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         self.audioEngine.stop()
         self.audioEngine.inputNode.removeTap(onBus: self.channel)
         self.recognitionRequest?.endAudio()
+//        self.recognitionTask?.cancel()
+//        self.recognitionRequest = nil
+//        self.recognitionTask = nil
+        self.view.isUserInteractionEnabled = true
+        
         //                    self.microphoneImageView.image = UIImage(named: "Microphone")
-     //   self.logoBTN.isSelected = false
-        self.showSettingNavCloseButton = true
+      //  self.logoBTN.isSelected = false
+        //self.showSettingNavCloseButton = true
         
     }
     
@@ -329,20 +341,21 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         
         timer?.invalidate()
         Stoptimer?.invalidate()
-        self.logoBTN.isSelected = false
         self.audioEngine.stop()
-        self.audioEngine.inputNode.removeTap(onBus: self.channel)
+        audioEngine.inputNode.removeTap(onBus: self.channel)
+        self.listening = false
         self.recognitionRequest = nil
         self.recognitionTask = nil
-        
-        self.noteLabel.text = "Tap to listen"
+//        self.noteLabel.text = "Tap to listen"
+//        self.tapButton.isEnabled = true
+//        self.showSettingNavCloseButton = true
         
     }
     
     
     @IBAction func send(_ sender: UIButton) {
         if let word = testTextFeild.text{
-            invoke(words:word)
+            speak(word:word)
         }
     }
     
@@ -350,15 +363,15 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
     func playOkSound(){
         let path = Bundle.main.path(forResource: "ok.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
-
+        
         do {
             bombSoundEffect = try AVAudioPlayer(contentsOf: url)
-            bombSoundEffect?.setVolume(50, fadeDuration: 0)
+            bombSoundEffect?.setVolume(100, fadeDuration: 0)
             bombSoundEffect?.play()
         } catch {
             // couldn't load file :(
         }
-
+        
         
     }
     
@@ -368,7 +381,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         
         do {
             bombSoundEffect = try AVAudioPlayer(contentsOf: url)
-            bombSoundEffect?.setVolume(50, fadeDuration: 0)
+            bombSoundEffect?.setVolume(100, fadeDuration: 0)
             bombSoundEffect?.play()
         } catch {
             // couldn't load file :(
@@ -377,6 +390,12 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         
     }
     
+    func ready(){
+        self.noteLabel.text = "Tap to listen"
+        self.tapButton.isEnabled = true
+        self.showSettingNavCloseButton = true
+        self.logoBTN.isSelected = false
+    }
     
     func getWords(word:String)->String{
         let letters = CharacterSet.letters
@@ -392,11 +411,11 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             }
             
         }
-//        if str.length > 0{
-//        let endIndex = str.index(str.endIndex, offsetBy: -1)
-//        str = str.substring(to: endIndex)
-//
-//        }
+        //        if str.length > 0{
+        //        let endIndex = str.index(str.endIndex, offsetBy: -1)
+        //        str = str.substring(to: endIndex)
+        //
+        //        }
         return str
         
     }
@@ -409,7 +428,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             self.showActivityLoader(true)
             
             let wordsarr = getWords(word: words)
-    
+            
             let newWords = wordsarr;
             
             ApiManager.shared.invoke(userId: id, words: newWords, completionBlock: { (success, error, result) in
@@ -418,11 +437,13 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 self.finalizeListening()
                 if success{
                     //self.playOkSound()
-                    self.commands = result
-                    if result.count == 1{
-                        self.selectedCommand = result[0]
-                        self.telnet(command: self.selectedCommand!)
-                    }else if result.count > 1 {
+                    self.response = result
+                    if self.response?.result?.count == 1{
+                        self.selectedResult = result?.result![0]
+                        self.handleResult()
+                       // self.telnet(command: self.selectedCommand!)
+                    }else if self.response?.result?.count > 1 {
+                        self.results = (self.response?.result)!
                         self.showCommnadsView()
                         self.tableView.reloadData()
                     }
@@ -430,6 +451,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 
                 if error != nil{
                     self.playErrorSound()
+                    self.ready()
                     if let msg = error?.message {
                         self.showMessage(message: msg, type: .error)
                         
@@ -440,8 +462,11 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             
             
             
+        }else{
+            self.ready()
+            
         }
-
+        
     }
     
     func showCommnadsView(){
@@ -454,52 +479,125 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         self.commandsView.isHidden = true
     }
     
-    func telnet(command:Command){
-        print("start")
-        print(command.command)
-        if let server = AppConfig.server,let value = AppConfig.port,let port = Int32(value){
-        let client = TCPClient(address: server, port: port)
+    
+    func handleResult(){
+        if let result = self.selectedResult{
+            if let method = result.method{
+                self.showActivityLoader(true)
+                
+                // get case
+                if method == "1"{
+                    if let commands = result.commands{
+                        for command in commands{
+                            if let url = command.url{
+                                ApiManager.shared.setObject(url: url,username:command.username!,password:command.password!, completionBlock: { (succes, error) in
+                                    self.finalizeListening()
+                                    self.showActivityLoader(false)
+                                    if succes{
+                                        self.speak(word: result.reply!)
+                                        print(result.reply)
+                                    }
+                                    
+                                    if error != nil{
+                                        
+                                        
+                                        
+                                    }
+                                })
+                                
+                                
+                            }
+                            
+                        }
+                        
+                    }
+
+                }else{ // set case
+                    
+                    if let commands = result.commands{
+                    for command in commands{
+                        if let url = command.url{
+                            ApiManager.shared.setObject(url: url,username:command.username!,password:command.password!, completionBlock: { (succes, error) in
+                                
+                                self.finalizeListening()
+                                self.showActivityLoader(false)
+                            if succes{
+                                self.speak(word: result.reply!)
+                                print(result.reply)
+                            }
+                            
+                            if error != nil{
+                                
+                                
+                                
+                            }
+                        })
+                    
+                    
+                        }
+                        
+                        }
+                        
+                    }
+                }
+                
+            }
+            
+            
+        }
         
-        switch client.connect(timeout: 10) {
+    }
+    
+    func telnet(command:Command){
+        if let server = AppConfig.server,let value = AppConfig.port,let port = Int32(value){
+            let client = TCPClient(address: server, port: port)
             
-        case .success:
-            switch client.send(string: "en:*\r\n" ) {
-            
+            switch client.connect(timeout: 10) {
+                
             case .success:
-                if let order = command.command{
-                switch client.send(string: "set:\(order)\r\n" ) {
-                   case .success:
-                    print("ok")
-                    self.playOkSound()
-                    self.showMessage(message: "Done".localized, type: .success)
+                switch client.send(string: "en:*\r\n" ) {
+                    
+                case .success:
+                    if let order = command.command{
+                        switch client.send(string: "set:\(order)\r\n" ) {
+                        case .success:
+                            print("ok")
+                            self.playOkSound()
+                            self.showMessage(message: "Done".localized, type: .success)
+                            self.ready()
+                            guard let data = client.read(1024*10) else { return }
+                            
+                            if let response = String(bytes: data, encoding: .utf8) {
+                                print(response)
+                            }
+                        case .failure(let error):
+                            self.playErrorSound()
+                            self.ready()
+                            self.showMessage(message: error.localizedDescription, type: .error)
+                        }
+                    }else{
+                    self.ready()
+                    }
+                    
                     guard let data = client.read(1024*10) else { return }
                     
                     if let response = String(bytes: data, encoding: .utf8) {
                         print(response)
                     }
-                    case .failure(let error):
-                        self.playErrorSound()
-                        self.showMessage(message: error.localizedDescription, type: .error)
-                    }
-                }
-                
-                
-                
-                guard let data = client.read(1024*10) else { return }
-                
-                if let response = String(bytes: data, encoding: .utf8) {
-                    print(response)
+                case .failure(let error):
+                    self.playErrorSound()
+                    self.ready()
+                    self.showMessage(message: error.localizedDescription, type: .error)
                 }
             case .failure(let error):
+                
                 self.playErrorSound()
-                self.showMessage(message: error.localizedDescription, type: .error)
-            }
-            case .failure(let error):
-                self.playErrorSound()
+                self.ready()
                 self.showMessage(message: error.localizedDescription, type: .error)
             }
         }else{
             self.playErrorSound()
+            self.ready()
             self.showMessage(message: "make sure to enter server and port in the setting", type: .error)
             
         }
@@ -515,7 +613,8 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
             return readResponse(from: client)
         case .failure(let error):
             self.playErrorSound()
-           print(error)
+            self.ready()
+            print(error)
             return nil
         }
     }
@@ -532,6 +631,28 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
         hideCommandView()
     }
     
+    
+    
+    
+    // text to speech
+    
+    func speak(word:String){
+        let audioSession = AVAudioSession.sharedInstance()
+        do{
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
+            try audioSession.setMode(AVAudioSessionModeSpokenAudio)
+            let speechUtterance = AVSpeechUtterance(string: "the bedroom light is get")
+            speechUtterance.rate = 0.25
+            speechUtterance.pitchMultiplier = 0.25
+            speechUtterance.volume = 100.0
+            speechSynthesizer.speak(speechUtterance)
+            
+        }catch{
+            
+        }
+
+    }
+    
 }
 
 
@@ -543,19 +664,20 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.commands.count
+        return self.results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text  = self.commands[indexPath.row].title
+        cell.textLabel?.text  = self.results[indexPath.row].title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedCommand = self.commands[indexPath.row]
+        selectedResult = self.results[indexPath.row]
+        handleResult()
         hideCommandView()
-        telnet(command: selectedCommand!)
+       // telnet(command: selectedCommand!)
     }
 }
 

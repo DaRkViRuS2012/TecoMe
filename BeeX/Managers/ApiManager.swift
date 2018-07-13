@@ -36,7 +36,7 @@ enum url {
 
 
 class ApiManager: NSObject {
-
+    
     typealias Payload = (MultipartFormData) -> Void
     
     /// frequent request headers
@@ -47,11 +47,13 @@ class ApiManager: NSObject {
             ]
             return httpHeaders
         }
+        set{
+        }
     }
     
 
-    let baseURL = "https://www.lutfi-co.com/smart/api/api.php"
-    let iosbaseURL = "https://www.lutfi-co.com/smart/api/api.php"
+    let baseURL = "https://www.lutfi-co.com/tecome1-1/api/api.php"
+    let iosbaseURL = "https://www.lutfi-co.com/tecome1-1/api/api.php"
     
     //MARK: Shared Instance
     static let shared: ApiManager = ApiManager()
@@ -70,7 +72,8 @@ class ApiManager: NSObject {
             "process":url.login.process,
             "username": email,
             "password": password,
-             "device" :"ios"
+             "device" :"ios",
+            "token": "123"
         ]
         print(parameters)
         // build request
@@ -166,7 +169,7 @@ class ApiManager: NSObject {
     // handle invoke
     
     /// User login request
-    func invoke(userId: String, words: String, completionBlock: @escaping (_ success: Bool, _ error: ServerError?, _ result:[Command]) -> Void) {
+    func invoke(userId: String, words: String, completionBlock: @escaping (_ success: Bool, _ error: ServerError?, _ result:Response?) -> Void) {
         // url & parameters
         
         
@@ -189,59 +192,7 @@ class ApiManager: NSObject {
         var request = try URLEncoding().encode(request1, with: parameters)
         let httpBody = NSString(data: request.httpBody!, encoding: String.Encoding.utf8.rawValue)!
         request.httpBody = httpBody.replacingOccurrences(of: "%5B%5D=", with: "=").data(using: .utf8)
-       // request1.setValue("charset=utf-8", forHTTPHeaderField: "Content-Type")
-       // request1.httpBody = try! JSONSerialization.data(withJSONObject: parameters)
       
-//        do {
-//             Alamofire.ParameterEncoding.encode(.)
-//            let alamofireRequest = try Alamofire.URLEncoding().encode(request1 as URLRequestConvertible, with: parameters)
-//            Alamofire.request(alamofireRequest).responseString  { (responseObject) -> Void in
-//                print(responseObject)
-//                if responseObject.result.isSuccess {
-//                    let jsonResponse = JSON(responseObject.result.value!)
-//                    print(jsonResponse)
-//                    if let code = responseObject.response?.statusCode, code >= 400 {
-//                        let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
-//                        completionBlock(false , serverError, [])
-//                    } else {
-//                        // parse response to data model >> user object
-//                        if let dic = jsonResponse.rawString()?.data(using: String.Encoding.utf8){
-//                            let json = JSON(dic)
-//                            if let code = json["success"].int ,code == 10{
-//                                var result:[Command] = []
-//                                if let array = json["commands"].array{
-//
-//                                    result = array.map{Command(json:$0)}
-//                                }
-//
-//                                completionBlock(true , nil,result)
-//
-//
-//                            }else{
-//
-//                                let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
-//                                completionBlock(false , serverError, [])
-//
-//                            }
-//
-//                        }
-//
-//                    }
-//                }
-//                // Network error request time out or server error with no payload
-//                if responseObject.result.isFailure {
-//                    if let code = responseObject.response?.statusCode, code >= 400 {
-//                        completionBlock(false, ServerError.unknownError, [])
-//                    } else {
-//                        completionBlock(false, ServerError.connectionError, [])
-//                    }
-//                }
-//            }
-//        } catch {
-//
-//        }
-//
-        
         // build request
         Alamofire.request(signInURL!,method:.post,parameters:parameters).responseString  { (responseObject) -> Void in
           //  Alamofire.request(request).responseString(encoding: String.Encoding.utf8)  { (responseObject) -> Void in
@@ -252,26 +203,19 @@ class ApiManager: NSObject {
                 if let code = responseObject.response?.statusCode, code >= 400 {
                     
                     let serverError = ServerError(json: jsonResponse) ?? ServerError.unknownError
-                    completionBlock(false , serverError, [])
+                    completionBlock(false , serverError,nil)
                 } else {
                     // parse response to data model >> user object
                     if let dic = jsonResponse.rawString()?.data(using: String.Encoding.utf8){
-                        let json = JSON(dic)
-                    if let code = json["success"].int ,code == 10{
-                        var result:[Command] = []
-                        if let array = json["commands"].array{
-
-                            result = array.map{Command(json:$0)}
-                        }
+                    let json = JSON(dic)
+                    let response = Response(json : json)
                         
-
-                        completionBlock(true , nil,result)
-
-
+                    if let code = response?.success ,code == 10{
+                        completionBlock(true , nil, response)
                     }else{
 
                         let serverError = ServerError(json: json) ?? ServerError.unknownError
-                        completionBlock(false , serverError, [])
+                        completionBlock(false , serverError,nil)
 
                         }
 
@@ -282,9 +226,9 @@ class ApiManager: NSObject {
             // Network error request time out or server error with no payload
             if responseObject.result.isFailure {
                 if let code = responseObject.response?.statusCode, code >= 400 {
-                    completionBlock(false, ServerError.unknownError, [])
+                    completionBlock(false, ServerError.unknownError,nil)
                 } else {
-                    completionBlock(false, ServerError.connectionError, [])
+                    completionBlock(false, ServerError.connectionError,nil)
                 }
             }
         }
@@ -295,6 +239,41 @@ class ApiManager: NSObject {
         }
     }
     
+    
+    // set object
+    func setObject(url:String,username:String,password:String, completionBlock: @escaping (_ success: Bool, _ error: ServerError?) -> Void) {
+        // url & parameters
+        let categoriesListURL = url
+        print(url)
+        let strBase64 = "\(username):\(password)".toBase64()
+        let Headers = ["Authorization": "Basic \(strBase64)"]
+        print(Headers)
+        Alamofire.request(categoriesListURL, method: .get, headers: Headers).response { (responseObject) -> Void in
+            print(responseObject)
+            completionBlock(true , nil)
+        }
+            
+       
+    }
+    
+    
+    // set object
+    func getObject(url:String,username:String,password:String, completionBlock: @escaping (_ success: Bool, _ error: ServerError?) -> Void) {
+        // url & parameters
+        let categoriesListURL = url
+        print(url)
+        let strBase64 = "\(username):\(password)".toBase64()
+        let Headers = ["Authorization": "Basic \(strBase64)"]
+        print(Headers)
+        Alamofire.request(categoriesListURL, method: .get, headers: Headers).response { (responseObject) -> Void in
+            print(responseObject)
+            completionBlock(true , nil)
+        }
+        
+        
+    }
+    
+
 
 }
 
@@ -392,13 +371,17 @@ struct ServerError {
     }
     
     public init?(json: JSON) {
+        print(json)
         guard let errorCode = json["success"].int else {
             return nil
         }
         code = errorCode
         if let errorString = json["name"].string{ errorName = errorString}
         if let statusCode = json["statusCode"].int{ status = statusCode}
-        if let msg = json["message"].string{ message = msg }
+        if let msg = json["message"].string{
+            message = msg
+            
+        }
     }
 }
 

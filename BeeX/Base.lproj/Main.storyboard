@@ -278,12 +278,6 @@
                             <constraint firstItem="3zt-gT-Khp" firstAttribute="leading" secondItem="ayR-vV-094" secondAttribute="leadingMargin" id="yoN-ce-nB6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MYr-gm-CzT"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="3zt-gT-Khp"/>
-                                <exclude reference="oVF-b5-af9"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Fee-bE-p3n"/>
                     <connections>
@@ -452,6 +446,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRN-5u-ukN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1294" y="1226"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="hdW-VH-Ctx">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="xvX-4p-haA" customClass="TestViewController" customModule="Teco_M_E_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cX8-aV-xrG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D2Z-bz-zUh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="347"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czR-s2-BFU">
+                                <rect key="frame" x="32" y="585" width="311" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="y5H-fO-mxg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="microphoneTapped:" destination="xvX-4p-haA" eventType="touchUpInside" id="ZFA-d4-CWA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D2Z-bz-zUh" firstAttribute="top" secondItem="yXt-4S-4HU" secondAttribute="top" id="2bh-Iz-ZN5"/>
+                            <constraint firstItem="yXt-4S-4HU" firstAttribute="bottom" secondItem="czR-s2-BFU" secondAttribute="bottom" constant="32" id="A7z-VJ-3yU"/>
+                            <constraint firstItem="yXt-4S-4HU" firstAttribute="bottom" secondItem="D2Z-bz-zUh" secondAttribute="bottom" constant="300" id="KW9-NL-geq"/>
+                            <constraint firstItem="D2Z-bz-zUh" firstAttribute="leading" secondItem="yXt-4S-4HU" secondAttribute="leading" id="W3d-g1-5Ox"/>
+                            <constraint firstItem="yXt-4S-4HU" firstAttribute="trailing" secondItem="czR-s2-BFU" secondAttribute="trailing" constant="32" id="Wix-kt-Lh1"/>
+                            <constraint firstItem="czR-s2-BFU" firstAttribute="leading" secondItem="yXt-4S-4HU" secondAttribute="leading" constant="32" id="cva-VX-6MR"/>
+                            <constraint firstItem="yXt-4S-4HU" firstAttribute="trailing" secondItem="D2Z-bz-zUh" secondAttribute="trailing" id="oOf-H1-QPU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yXt-4S-4HU"/>
+                    </view>
+                    <connections>
+                        <outlet property="microphoneButton" destination="czR-s2-BFU" id="mdY-Lj-1ws"/>
+                        <outlet property="textView" destination="D2Z-bz-zUh" id="6k2-fw-Hp2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDB-XA-oa0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3046" y="1256"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EgK-Cd-7fy">

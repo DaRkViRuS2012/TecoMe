@@ -102,7 +102,10 @@ class LoginViewController: AbstractController {
                                 self.performSegue(withIdentifier: "loginhomeSegue", sender: nil)
 //                                self.popOrDismissViewControllerAnimated(animated: true)                                
                             } else {
-                                self.showMessage(message:(error?.message)!, type: .error)
+                                if let msg = error?.message{
+                                    self.showMessage(message: msg , type: .error)
+                                    
+                                }
                             }
                         }
                     } else {
