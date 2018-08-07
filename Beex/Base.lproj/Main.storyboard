@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m3d-7f-J1h">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="WwL-0b-UFG">
+            <objects>
+                <viewController id="qxK-XX-xPO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3vg-iI-1Rd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Fo7-H7-RkM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9rb-uV-KtD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1311" y="221"/>
+        </scene>
+        <!--Start View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="StartViewController" id="BYZ-38-t0r" customClass="StartViewController" customModule="Teco_M_E_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5" translatesAutoresizingMaskIntoConstraints="NO" id="7By-0P-9bg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="kgZ-7y-ytf">
+                                <rect key="frame" x="32" y="291" width="311" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="5Ou-PH-I7f"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kgZ-7y-ytf" secondAttribute="trailing" constant="32" id="8mG-Bz-zef"/>
+                            <constraint firstItem="7By-0P-9bg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BLx-CS-mEC"/>
+                            <constraint firstItem="kgZ-7y-ytf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="KQ1-Z8-GKz"/>
+                            <constraint firstItem="kgZ-7y-ytf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SC7-9Z-6Hj"/>
+                            <constraint firstItem="kgZ-7y-ytf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bj1-p6-izy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7By-0P-9bg" secondAttribute="bottom" id="bjj-w6-loG"/>
+                            <constraint firstItem="7By-0P-9bg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qMG-Ny-Syh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7By-0P-9bg" secondAttribute="trailing" id="wwI-WP-uRE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4d6-gA-dA5"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <segue destination="Ktl-HY-KT5" kind="presentation" identifier="loginSegue" id="MyA-ar-76N"/>
+                        <segue destination="bbj-W7-wBU" kind="presentation" identifier="homeSegue" id="2ye-n0-8pv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="552.79999999999995" y="220.83958020989508"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DVb-in-ZoF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m3d-7f-J1h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6ug-Iz-cNN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rzj-zE-cmQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7NH-zR-OqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-310" y="221"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dOG-Fq-k6g">
+            <objects>
+                <viewController id="mcp-9M-0h7" customClass="ViewController" customModule="Teco_M_E_" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mMF-6J-tC1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wnp-d3-82o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ayR-vV-094">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5" translatesAutoresizingMaskIntoConstraints="NO" id="hPl-Ug-uxa">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbc-fY-KLS">
+                                <rect key="frame" x="150" y="527" width="75" height="75"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="41F-U5-jox" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstAttribute="width" constant="75" id="bIj-Wt-ESq" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                                <state key="normal" image="6"/>
+                                <connections>
+                                    <action selector="viewTapped:" destination="mcp-9M-0h7" eventType="touchUpInside" id="Xhh-C6-fsZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKz-BS-2Uz">
+                                <rect key="frame" x="63" y="208" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="1f3-HX-CPC" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstAttribute="height" constant="250" id="al3-0X-vOr" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="1"/>
+                                <state key="selected" image="3"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="J4S-E7-wzq">
+                                <rect key="frame" x="32" y="96" width="311" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="fpj-RN-5Nh" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teco a.s-m.e.group" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1L-cA-sBL">
+                                <rect key="frame" x="8" y="638" width="149" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www.tecomat.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0n-Wy-5BZ">
+                                <rect key="frame" x="225" y="638" width="142" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to listen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yaq-V9-6SP">
+                                <rect key="frame" x="141.5" y="490" width="92.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="اطفئ,الضوء" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3zt-gT-Khp">
+                                <rect key="frame" x="8" y="202" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9Ao-cI-h7A"/>
+                                    <constraint firstAttribute="width" constant="97" id="jKa-8f-LBN"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVF-b5-af9">
+                                <rect key="frame" x="16" y="255" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="send:" destination="mcp-9M-0h7" eventType="touchUpInside" id="bda-Fy-dSo"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNu-vS-AKc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-42-h9J">
+                                        <rect key="frame" x="65" y="121" width="245" height="360"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select your command" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol4-8b-BWa">
+                                                <rect key="frame" x="0.0" y="0.0" width="245" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Rkn-GE-njl"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vec-sB-1Pm">
+                                                <rect key="frame" x="0.0" y="330" width="245" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="2p3-Fi-Tij"/>
+                                                </constraints>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="1" green="0.32313155789999998" blue="0.1917955117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancel:" destination="mcp-9M-0h7" eventType="touchUpInside" id="voq-mH-mp3"/>
+                                                </connections>
+                                            </button>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pzi-XS-daY">
+                                                <rect key="frame" x="0.0" y="30" width="245" height="300"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="Xtt-Fm-Uj5"/>
+                                                </constraints>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="KtZ-2b-Kcc" style="IBUITableViewCellStyleDefault" id="fIw-5b-xZj">
+                                                        <rect key="frame" x="0.0" y="28" width="245" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fIw-5b-xZj" id="rIw-OC-7ZX">
+                                                            <rect key="frame" x="0.0" y="0.0" width="245" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KtZ-2b-Kcc">
+                                                                    <rect key="frame" x="15" y="0.0" width="215" height="43.5"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="mcp-9M-0h7" id="Bpy-Nb-NEz"/>
+                                                    <outlet property="delegate" destination="mcp-9M-0h7" id="Xea-A3-F01"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="vec-sB-1Pm" firstAttribute="leading" secondItem="W1E-42-h9J" secondAttribute="leading" id="0fx-nN-KzP" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstItem="ol4-8b-BWa" firstAttribute="top" secondItem="W1E-42-h9J" secondAttribute="top" id="3ab-cl-yhh" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pzi-XS-daY" secondAttribute="trailing" id="9IL-Zf-hzZ" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstAttribute="trailing" secondItem="ol4-8b-BWa" secondAttribute="trailing" id="Dxw-vh-BdC" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstAttribute="trailing" secondItem="vec-sB-1Pm" secondAttribute="trailing" id="OKE-4o-LdS" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstAttribute="bottom" secondItem="vec-sB-1Pm" secondAttribute="bottom" id="Td1-ny-iyX" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstAttribute="height" constant="360" id="Vdp-Pg-1Fr" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstItem="Pzi-XS-daY" firstAttribute="top" secondItem="ol4-8b-BWa" secondAttribute="bottom" id="bex-Fi-BxF" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstItem="ol4-8b-BWa" firstAttribute="leading" secondItem="W1E-42-h9J" secondAttribute="leading" id="gPf-f8-45d" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                            <constraint firstItem="vec-sB-1Pm" firstAttribute="top" secondItem="Pzi-XS-daY" secondAttribute="bottom" id="laP-5F-NIi"/>
+                                            <constraint firstItem="Pzi-XS-daY" firstAttribute="leading" secondItem="W1E-42-h9J" secondAttribute="leading" id="r0N-qf-3uP" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.26862157534246578" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="W1E-42-h9J" secondAttribute="trailing" constant="65" id="CpW-Yj-brQ" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstItem="W1E-42-h9J" firstAttribute="leading" secondItem="bNu-vS-AKc" secondAttribute="leading" constant="65" id="hId-N7-FT8" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstItem="W1E-42-h9J" firstAttribute="centerY" secondItem="bNu-vS-AKc" secondAttribute="centerY" id="oXr-ce-zMj" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hPl-Ug-uxa" firstAttribute="top" secondItem="ayR-vV-094" secondAttribute="top" id="0zV-QL-KBt" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="MYr-gm-CzT" firstAttribute="trailing" secondItem="bNu-vS-AKc" secondAttribute="trailing" id="2eS-LJ-EBs" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Wnp-d3-82o" firstAttribute="top" secondItem="hPl-Ug-uxa" secondAttribute="bottom" id="4fA-4O-bUA" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Qbc-fY-KLS" firstAttribute="centerX" secondItem="ayR-vV-094" secondAttribute="centerX" id="4nE-jx-BuQ" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="J4S-E7-wzq" firstAttribute="leading" secondItem="MYr-gm-CzT" secondAttribute="leading" constant="32" id="6iO-b1-cHg" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="MYr-gm-CzT" firstAttribute="trailing" secondItem="J4S-E7-wzq" secondAttribute="trailing" constant="32" id="9Li-Lo-sV4" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="bNu-vS-AKc" firstAttribute="leading" secondItem="MYr-gm-CzT" secondAttribute="leading" id="E0i-Qk-2re" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="hPl-Ug-uxa" secondAttribute="trailing" id="E42-Gw-M9k" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Wnp-d3-82o" firstAttribute="top" secondItem="Qbc-fY-KLS" secondAttribute="bottom" constant="65" id="Lbw-qS-KcW" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="J4S-E7-wzq" firstAttribute="top" secondItem="mMF-6J-tC1" secondAttribute="bottom" constant="32" id="LlP-pR-ZnH" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Wnp-d3-82o" firstAttribute="top" secondItem="C0n-Wy-5BZ" secondAttribute="bottom" constant="8" id="LyJ-5e-9an"/>
+                            <constraint firstItem="Wnp-d3-82o" firstAttribute="top" secondItem="bNu-vS-AKc" secondAttribute="bottom" id="NKj-0u-OMd" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="MYr-gm-CzT" firstAttribute="trailing" secondItem="C0n-Wy-5BZ" secondAttribute="trailing" constant="8" id="XCb-Jo-itq"/>
+                            <constraint firstItem="PKz-BS-2Uz" firstAttribute="centerY" secondItem="ayR-vV-094" secondAttribute="centerY" id="Ysc-zC-2Ly" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="3zt-gT-Khp" firstAttribute="leading" secondItem="MYr-gm-CzT" secondAttribute="leading" constant="8" id="bAA-ui-kwz"/>
+                            <constraint firstItem="3zt-gT-Khp" firstAttribute="top" secondItem="J4S-E7-wzq" secondAttribute="bottom" constant="26" id="col-1W-toE"/>
+                            <constraint firstItem="bNu-vS-AKc" firstAttribute="top" secondItem="mMF-6J-tC1" secondAttribute="bottom" id="gsY-4x-Df1" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="hPl-Ug-uxa" firstAttribute="leading" secondItem="MYr-gm-CzT" secondAttribute="leading" id="gwT-f5-6nJ" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="X1L-cA-sBL" firstAttribute="leading" secondItem="MYr-gm-CzT" secondAttribute="leading" constant="8" id="oWm-F4-Oas"/>
+                            <constraint firstItem="Yaq-V9-6SP" firstAttribute="centerX" secondItem="ayR-vV-094" secondAttribute="centerX" id="oaX-AX-L9K"/>
+                            <constraint firstItem="Qbc-fY-KLS" firstAttribute="top" secondItem="Yaq-V9-6SP" secondAttribute="bottom" constant="16" id="rMU-In-RW4"/>
+                            <constraint firstItem="PKz-BS-2Uz" firstAttribute="centerX" secondItem="ayR-vV-094" secondAttribute="centerX" id="vdC-iF-pGz" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Wnp-d3-82o" firstAttribute="top" secondItem="X1L-cA-sBL" secondAttribute="bottom" constant="8" id="wie-VQ-VxP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MYr-gm-CzT"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fee-bE-p3n"/>
+                    <connections>
+                        <outlet property="commandsView" destination="bNu-vS-AKc" id="edr-jW-a9X"/>
+                        <outlet property="logoBTN" destination="PKz-BS-2Uz" id="SS6-HH-Zxs"/>
+                        <outlet property="noteLabel" destination="Yaq-V9-6SP" id="asn-el-saN"/>
+                        <outlet property="tableView" destination="Pzi-XS-daY" id="SiM-P4-sOu"/>
+                        <outlet property="tapButton" destination="Qbc-fY-KLS" id="1aL-XQ-HuU"/>
+                        <outlet property="testTextFeild" destination="3zt-gT-Khp" id="8OU-dV-Tdk"/>
+                        <segue destination="MB0-vj-JgJ" kind="show" identifier="settingSegue" id="vLq-zR-hZe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V6i-6R-ttK" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2856.8000000000002" y="221.73913043478262"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="mc2-tc-aQ3">
+            <objects>
+                <viewController id="VgT-YE-nKf" customClass="LoginViewController" customModule="Teco_M_E_" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iJR-9s-OPq"/>
+                        <viewControllerLayoutGuide type="bottom" id="fAX-tz-xD6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jXF-Ug-zAb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5" translatesAutoresizingMaskIntoConstraints="NO" id="ljp-H0-LIr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUS-xa-FU3" userLabel="Login View">
+                                <rect key="frame" x="32" y="182" width="311" height="108"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BGf-p0-pQJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="Q4Y-Ld-6d7" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="VgT-YE-nKf" id="bxc-YC-rJN"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kw5-Ko-jJ4">
+                                        <rect key="frame" x="0.0" y="54" width="311" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="Uwu-Pk-RKw" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="VgT-YE-nKf" id="Z8K-gf-sNO"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BGf-p0-pQJ" firstAttribute="top" secondItem="qUS-xa-FU3" secondAttribute="top" id="9vI-Qt-H7y"/>
+                                    <constraint firstAttribute="trailing" secondItem="BGf-p0-pQJ" secondAttribute="trailing" id="AXC-SC-1En"/>
+                                    <constraint firstItem="Kw5-Ko-jJ4" firstAttribute="leading" secondItem="qUS-xa-FU3" secondAttribute="leading" id="FbT-MW-Ydz"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kw5-Ko-jJ4" secondAttribute="trailing" id="S0a-hs-T7r"/>
+                                    <constraint firstItem="Kw5-Ko-jJ4" firstAttribute="top" secondItem="BGf-p0-pQJ" secondAttribute="bottom" id="p4R-dX-naZ"/>
+                                    <constraint firstItem="BGf-p0-pQJ" firstAttribute="leading" secondItem="qUS-xa-FU3" secondAttribute="leading" id="uyw-h8-brW"/>
+                                    <constraint firstAttribute="height" constant="108" id="ytJ-hq-Vdi" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Kv-ke-v0j">
+                                <rect key="frame" x="0.0" y="603" width="375" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="63q-h5-sQO" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDu-cB-hJI" userLabel="Center View">
+                                <rect key="frame" x="0.0" y="290" width="375" height="313"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75b-un-37c" customClass="RNLoadingButton" customModule="Teco_M_E_" customModuleProvider="target">
+                                        <rect key="frame" x="32" y="80" width="311" height="50"/>
+                                        <color key="backgroundColor" red="0.50588235290000005" green="0.66274509800000003" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="TU0-Rq-fCb" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                        </constraints>
+                                        <state key="normal" title="Sign in"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.92156862750000001" green="0.090196078430000007" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hideImageWhenLoading" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="activityIndicatorColor">
+                                                <color key="value" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="normalBorderColor">
+                                                <color key="value" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBorderColor">
+                                                <color key="value" red="0.92156862750000001" green="0.090196078430000007" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginAction:" destination="VgT-YE-nKf" eventType="touchUpInside" id="efL-ap-8oc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="75b-un-37c" firstAttribute="top" secondItem="WDu-cB-hJI" secondAttribute="top" constant="80" id="nEk-Xe-3vu" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstAttribute="trailing" secondItem="75b-un-37c" secondAttribute="trailing" constant="32" id="pES-Wg-sLN" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstItem="75b-un-37c" firstAttribute="leading" secondItem="WDu-cB-hJI" secondAttribute="leading" constant="32" id="tHv-FH-74A" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="b0C-I9-Be3">
+                                <rect key="frame" x="32" y="32" width="311" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="2O2-U4-jRz" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6Kv-ke-v0j" secondAttribute="trailing" id="0V1-KL-jND" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="6Kv-ke-v0j" firstAttribute="top" secondItem="ljp-H0-LIr" secondAttribute="bottom" id="0YJ-pz-2My" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="6Kv-ke-v0j" firstAttribute="top" secondItem="WDu-cB-hJI" secondAttribute="bottom" id="0gG-cy-qBG" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="ljp-H0-LIr" secondAttribute="trailing" id="7wE-FL-vd1" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Btw-xW-up1" firstAttribute="trailing" secondItem="b0C-I9-Be3" secondAttribute="trailing" constant="32" id="8km-Ys-kQa" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="WDu-cB-hJI" firstAttribute="top" secondItem="qUS-xa-FU3" secondAttribute="bottom" id="AR7-aK-ypB" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="WDu-cB-hJI" firstAttribute="leading" secondItem="jXF-Ug-zAb" secondAttribute="leading" id="Krs-gT-Mhk" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="fAX-tz-xD6" firstAttribute="top" secondItem="6Kv-ke-v0j" secondAttribute="bottom" id="LcX-nL-R1A" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="ljp-H0-LIr" firstAttribute="leading" secondItem="Btw-xW-up1" secondAttribute="leading" id="Lgx-tg-NS6" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="fAX-tz-xD6" firstAttribute="top" secondItem="6Kv-ke-v0j" secondAttribute="bottom" id="LsB-4L-SVn" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="qUS-xa-FU3" secondAttribute="trailing" constant="32" id="UvE-ka-5kg" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="6Kv-ke-v0j" firstAttribute="leading" secondItem="jXF-Ug-zAb" secondAttribute="leading" id="evW-uf-I9A" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="qUS-xa-FU3" firstAttribute="leading" secondItem="jXF-Ug-zAb" secondAttribute="leading" constant="32" id="jAg-f2-2xX" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="b0C-I9-Be3" firstAttribute="top" secondItem="iJR-9s-OPq" secondAttribute="bottom" constant="32" id="loW-lT-qrA" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="6Kv-ke-v0j" firstAttribute="top" secondItem="WDu-cB-hJI" secondAttribute="bottom" id="m7d-2E-Tyw" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="ljp-H0-LIr" firstAttribute="top" secondItem="jXF-Ug-zAb" secondAttribute="top" id="phY-w9-Aj0" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="6Kv-ke-v0j" secondAttribute="trailing" id="rNm-hi-R8d" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="6Kv-ke-v0j" firstAttribute="leading" secondItem="jXF-Ug-zAb" secondAttribute="leading" id="sa1-4a-qvL" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="b0C-I9-Be3" firstAttribute="leading" secondItem="Btw-xW-up1" secondAttribute="leading" constant="32" id="uNX-wG-ao7" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="WDu-cB-hJI" secondAttribute="trailing" id="wbY-Hg-d27" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="qUS-xa-FU3" firstAttribute="top" secondItem="iJR-9s-OPq" secondAttribute="bottom" constant="182" id="z3L-et-MPf" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Btw-xW-up1"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="L2C-g0-wuV"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="centerView" destination="WDu-cB-hJI" id="5xg-fk-BjP"/>
+                        <outlet property="emailTextField" destination="BGf-p0-pQJ" id="H4r-V4-CWW"/>
+                        <outlet property="footerView" destination="6Kv-ke-v0j" id="1Lv-Qf-HZh"/>
+                        <outlet property="loginButton" destination="75b-un-37c" id="iDv-vk-cNS"/>
+                        <outlet property="loginView" destination="qUS-xa-FU3" id="RWn-XN-dBL"/>
+                        <outlet property="passwordTextField" destination="Kw5-Ko-jJ4" id="Jji-03-azX"/>
+                        <outlet property="view" destination="jXF-Ug-zAb" id="wPM-j3-a8R"/>
+                        <segue destination="bbj-W7-wBU" kind="presentation" identifier="loginhomeSegue" id="3Jl-y5-GIE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JRN-5u-ukN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1294" y="1226"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="hdW-VH-Ctx">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="xvX-4p-haA" customClass="TestViewController" customModule="Teco_M_E_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cX8-aV-xrG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D2Z-bz-zUh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="347"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czR-s2-BFU">
+                                <rect key="frame" x="32" y="585" width="311" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="y5H-fO-mxg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="microphoneTapped:" destination="xvX-4p-haA" eventType="touchUpInside" id="ZFA-d4-CWA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D2Z-bz-zUh" firstAttribute="top" secondItem="yXt-4S-4HU" secondAttribute="top" id="2bh-Iz-ZN5"/>
+                            <constraint firstItem="yXt-4S-4HU" firstAttribute="bottom" secondItem="czR-s2-BFU" secondAttribute="bottom" constant="32" id="A7z-VJ-3yU"/>
+                            <constraint firstItem="yXt-4S-4HU" firstAttribute="bottom" secondItem="D2Z-bz-zUh" secondAttribute="bottom" constant="300" id="KW9-NL-geq"/>
+                            <constraint firstItem="D2Z-bz-zUh" firstAttribute="leading" secondItem="yXt-4S-4HU" secondAttribute="leading" id="W3d-g1-5Ox"/>
+                            <constraint firstItem="yXt-4S-4HU" firstAttribute="trailing" secondItem="czR-s2-BFU" secondAttribute="trailing" constant="32" id="Wix-kt-Lh1"/>
+                            <constraint firstItem="czR-s2-BFU" firstAttribute="leading" secondItem="yXt-4S-4HU" secondAttribute="leading" constant="32" id="cva-VX-6MR"/>
+                            <constraint firstItem="yXt-4S-4HU" firstAttribute="trailing" secondItem="D2Z-bz-zUh" secondAttribute="trailing" id="oOf-H1-QPU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yXt-4S-4HU"/>
+                    </view>
+                    <connections>
+                        <outlet property="microphoneButton" destination="czR-s2-BFU" id="mdY-Lj-1ws"/>
+                        <outlet property="textView" destination="D2Z-bz-zUh" id="6k2-fw-Hp2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDB-XA-oa0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3046" y="1256"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EgK-Cd-7fy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ktl-HY-KT5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Fm-ua-dy0">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VgT-YE-nKf" kind="relationship" relationship="rootViewController" id="Rfm-ln-Bnz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G0Y-Z7-GsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="1227"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YiH-mU-59Q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bbj-W7-wBU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E7x-IY-0Wx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mcp-9M-0h7" kind="relationship" relationship="rootViewController" id="b01-C8-CdD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9hp-yL-3ty" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1927" y="221"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="iyF-8c-Db7">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="MB0-vj-JgJ" customClass="SettingsViewController" customModule="Teco_M_E_" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tpC-XL-uw8"/>
+                        <viewControllerLayoutGuide type="bottom" id="zgO-C2-Q0G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PbS-fb-Wfm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5" translatesAutoresizingMaskIntoConstraints="NO" id="Biy-WT-06V">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAN-rp-kgs" userLabel="Login View">
+                                <rect key="frame" x="32" y="184" width="311" height="108"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Der-uH-2dP" customClass="XUITextField" customModule="Teco_M_E_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="V6Z-iR-01B" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Port" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sJd-4P-1Me" customClass="XUITextField" customModule="Teco_M_E_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="54" width="311" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="8hF-WJ-PjE" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Der-uH-2dP" secondAttribute="trailing" id="35H-Sy-aOr"/>
+                                    <constraint firstItem="Der-uH-2dP" firstAttribute="leading" secondItem="TAN-rp-kgs" secondAttribute="leading" id="8Sq-tL-PyE"/>
+                                    <constraint firstAttribute="height" constant="108" id="N1r-A4-ivq" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstAttribute="trailing" secondItem="sJd-4P-1Me" secondAttribute="trailing" id="Ue8-D0-LlW"/>
+                                    <constraint firstItem="Der-uH-2dP" firstAttribute="top" secondItem="TAN-rp-kgs" secondAttribute="top" id="a9h-el-9U7"/>
+                                    <constraint firstItem="sJd-4P-1Me" firstAttribute="top" secondItem="Der-uH-2dP" secondAttribute="bottom" id="bPw-jj-ugf"/>
+                                    <constraint firstItem="sJd-4P-1Me" firstAttribute="leading" secondItem="TAN-rp-kgs" secondAttribute="leading" id="dfu-t4-vG8"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-q5-zOB">
+                                <rect key="frame" x="0.0" y="603" width="375" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="qJv-wq-17b" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8r-Wb-AeR" userLabel="Center View">
+                                <rect key="frame" x="0.0" y="132" width="375" height="471"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwK-cW-sUm">
+                                        <rect key="frame" x="32" y="180" width="311" height="50"/>
+                                        <color key="backgroundColor" red="0.50588235290000005" green="0.66274509800000003" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="AP6-FQ-JNf" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                        </constraints>
+                                        <state key="normal" title="Save"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.92156862750000001" green="0.090196078430000007" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="save:" destination="MB0-vj-JgJ" eventType="touchUpInside" id="Mnk-Fr-geP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mn9-6F-Tkr">
+                                        <rect key="frame" x="32" y="32" width="311" height="50"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="5ln-6I-vUB" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                        </constraints>
+                                        <state key="normal" title="Language">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.92156862750000001" green="0.090196078430000007" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectLanguage:" destination="MB0-vj-JgJ" eventType="touchUpInside" id="51t-y6-Bwa"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUM-Wj-0fq">
+                                        <rect key="frame" x="32" y="98" width="311" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show commands" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsT-LH-WR1">
+                                                <rect key="frame" x="0.0" y="0.0" width="246" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPL-aJ-KvF">
+                                                <rect key="frame" x="254" y="9.5" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="changeShowCommand:" destination="MB0-vj-JgJ" eventType="valueChanged" id="JAc-kY-bp2"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="PsT-LH-WR1" firstAttribute="top" secondItem="pUM-Wj-0fq" secondAttribute="top" id="7tT-HR-h4z"/>
+                                            <constraint firstItem="PsT-LH-WR1" firstAttribute="leading" secondItem="pUM-Wj-0fq" secondAttribute="leading" id="QZq-7q-XwF"/>
+                                            <constraint firstAttribute="bottom" secondItem="PsT-LH-WR1" secondAttribute="bottom" id="T6h-hy-NO1"/>
+                                            <constraint firstItem="iPL-aJ-KvF" firstAttribute="leading" secondItem="PsT-LH-WR1" secondAttribute="trailing" constant="8" id="hIq-2X-MxV"/>
+                                            <constraint firstAttribute="height" constant="50" id="oFa-ZU-ao4"/>
+                                            <constraint firstAttribute="trailing" secondItem="iPL-aJ-KvF" secondAttribute="trailing" constant="8" id="rbl-Bb-kOD"/>
+                                            <constraint firstItem="iPL-aJ-KvF" firstAttribute="centerY" secondItem="pUM-Wj-0fq" secondAttribute="centerY" id="saO-XT-6fK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Mn9-6F-Tkr" firstAttribute="leading" secondItem="K8r-Wb-AeR" secondAttribute="leading" constant="32" id="9qk-Y9-kpA"/>
+                                    <constraint firstItem="pUM-Wj-0fq" firstAttribute="leading" secondItem="K8r-Wb-AeR" secondAttribute="leading" constant="32" id="Bmy-2m-e9f"/>
+                                    <constraint firstItem="pUM-Wj-0fq" firstAttribute="top" secondItem="Mn9-6F-Tkr" secondAttribute="bottom" constant="16" id="MNr-PS-FJX"/>
+                                    <constraint firstItem="Mn9-6F-Tkr" firstAttribute="top" secondItem="K8r-Wb-AeR" secondAttribute="top" constant="32" id="Tjl-8Q-byR"/>
+                                    <constraint firstItem="ZwK-cW-sUm" firstAttribute="leading" secondItem="K8r-Wb-AeR" secondAttribute="leading" constant="32" id="bPm-kZ-NIC" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstItem="ZwK-cW-sUm" firstAttribute="top" secondItem="pUM-Wj-0fq" secondAttribute="bottom" constant="32" id="bTq-TR-DJc"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZwK-cW-sUm" secondAttribute="trailing" constant="32" id="kN1-NS-5zF" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                    <constraint firstAttribute="trailing" secondItem="pUM-Wj-0fq" secondAttribute="trailing" constant="32" id="oha-mo-PXf"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mn9-6F-Tkr" secondAttribute="trailing" constant="32" id="z3M-PN-fCc"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lbr-DQ-4Eb">
+                                <rect key="frame" x="32" y="32" width="311" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="pOW-Ih-HKA" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EAZ-Gd-Sjh" firstAttribute="trailing" secondItem="Lbr-DQ-4Eb" secondAttribute="trailing" constant="32" id="3rR-L7-Gzu" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="K8r-Wb-AeR" firstAttribute="top" secondItem="TAN-rp-kgs" secondAttribute="bottom" id="7nK-qP-N4S" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Lbr-DQ-4Eb" firstAttribute="top" secondItem="tpC-XL-uw8" secondAttribute="bottom" constant="32" id="BmN-f9-Gni" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Biy-WT-06V" firstAttribute="top" secondItem="PbS-fb-Wfm" secondAttribute="top" id="C1K-Om-JK2" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="TAN-rp-kgs" firstAttribute="top" secondItem="tpC-XL-uw8" secondAttribute="bottom" constant="184" id="EwQ-hL-Qgy" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="HcM-q5-zOB" firstAttribute="top" secondItem="K8r-Wb-AeR" secondAttribute="bottom" id="Nag-eM-sV5" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="TAN-rp-kgs" firstAttribute="leading" secondItem="PbS-fb-Wfm" secondAttribute="leading" constant="32" id="Qle-9i-Axe" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="TAN-rp-kgs" secondAttribute="trailing" constant="32" id="UWT-Id-eS7" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="K8r-Wb-AeR" firstAttribute="leading" secondItem="PbS-fb-Wfm" secondAttribute="leading" id="YWw-XI-mz1" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Lbr-DQ-4Eb" firstAttribute="leading" secondItem="EAZ-Gd-Sjh" secondAttribute="leading" constant="32" id="an9-hN-eRx" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="zgO-C2-Q0G" firstAttribute="top" secondItem="HcM-q5-zOB" secondAttribute="bottom" id="c2c-qc-eYE" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="HcM-q5-zOB" secondAttribute="trailing" id="cyX-jU-n83" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="HcM-q5-zOB" firstAttribute="top" secondItem="Biy-WT-06V" secondAttribute="bottom" id="flJ-Rf-6ZY" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="zgO-C2-Q0G" firstAttribute="top" secondItem="HcM-q5-zOB" secondAttribute="bottom" id="jeJ-P7-Wsy" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="K8r-Wb-AeR" secondAttribute="trailing" id="lHZ-kR-vCY" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="Biy-WT-06V" firstAttribute="leading" secondItem="EAZ-Gd-Sjh" secondAttribute="leading" id="nkv-HB-ja0" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="HcM-q5-zOB" secondAttribute="trailing" id="qEl-zb-ai7" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="HcM-q5-zOB" firstAttribute="leading" secondItem="PbS-fb-Wfm" secondAttribute="leading" id="rcp-Gr-YFa" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstAttribute="trailing" secondItem="Biy-WT-06V" secondAttribute="trailing" id="uVl-IL-VsU" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="HcM-q5-zOB" firstAttribute="top" secondItem="K8r-Wb-AeR" secondAttribute="bottom" id="uVu-jv-SVg" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                            <constraint firstItem="K8r-Wb-AeR" firstAttribute="top" secondItem="Lbr-DQ-4Eb" secondAttribute="bottom" constant="16" id="w1s-qB-4qr"/>
+                            <constraint firstItem="HcM-q5-zOB" firstAttribute="leading" secondItem="PbS-fb-Wfm" secondAttribute="leading" id="zXF-eV-dj3" customClass="XNSLayoutConstraint" customModule="Teco_M_E_" customModuleProvider="target"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EAZ-Gd-Sjh"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="TAN-rp-kgs"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tyt-Pc-hKr"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="languagesButton" destination="Mn9-6F-Tkr" id="dQZ-37-qnz"/>
+                        <outlet property="switcher" destination="iPL-aJ-KvF" id="YzJ-9z-1Rm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PYn-gx-y8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4240.8000000000002" y="167.76611694152925"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1" width="1276" height="1265"/>
+        <image name="2" width="1170" height="249"/>
+        <image name="3" width="1274" height="1270"/>
+        <image name="5" width="1470" height="3000"/>
+        <image name="6" width="492" height="491"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3Jl-y5-GIE"/>
+    </inferredMetricsTieBreakers>
+</document>
