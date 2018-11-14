@@ -92,6 +92,20 @@ struct AppConfig {
     
         UITabBar.appearance().tintColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0)
     }
+    
+    static func getwebSize()->webSize{
+        
+        if ScreenSize.isIphone{
+            return webSize.medium
+        }
+        if ScreenSize.isIpad{
+            return webSize.larg
+        }
+        if ScreenSize.isBigScreen{
+            return webSize.larg
+        }
+        return webSize.xlarg
+    }
 }
 
 
@@ -111,7 +125,17 @@ enum ScreenSize {
     static let isMidScreen =  UIScreen.main.bounds.height <= 667 // iPhone 6 & 7
     static let isBigScreen =  UIScreen.main.bounds.height >= 736 // iphone 6Plus/7Plus
     static let isIphone = UIDevice.current.userInterfaceIdiom == .phone
+    static let isIpad = UIDevice.current.userInterfaceIdiom == .pad
 }
+
+enum webSize:String{
+    case small = "S"
+    case larg = "L"
+    case xlarg = "X"
+    case medium = "M"
+}
+
+
 
 enum ScreenSizeRatio{
 

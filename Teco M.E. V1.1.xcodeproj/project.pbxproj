@@ -89,6 +89,8 @@
 		14DDDE5E208E1D8400A4A403 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14DDDE5C208E1D8400A4A403 /* error.mp3 */; };
 		14DDDE5F208E1D8400A4A403 /* ok.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 14DDDE5D208E1D8400A4A403 /* ok.mp3 */; };
 		14FBEF892093478500ACDE89 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FBEF882093478500ACDE89 /* TestViewController.swift */; };
+		14FD7C29216100AD00E5AB08 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FD7C28216100AD00E5AB08 /* View.swift */; };
+		14FD7C2B2161075A00E5AB08 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FD7C2A2161075A00E5AB08 /* WebViewController.swift */; };
 		261EBF2533AE9F1383045A4C /* Pods_Teco_M_E_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DDFB74F8614CC8E8B7ED3C /* Pods_Teco_M_E_.framework */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +181,8 @@
 		14DDDE5C208E1D8400A4A403 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
 		14DDDE5D208E1D8400A4A403 /* ok.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ok.mp3; sourceTree = "<group>"; };
 		14FBEF882093478500ACDE89 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		14FD7C28216100AD00E5AB08 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		14FD7C2A2161075A00E5AB08 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		8D7DABE506C5F8F32685AE19 /* Pods-Teco M.E..debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teco M.E..debug.xcconfig"; path = "Pods/Target Support Files/Pods-Teco M.E./Pods-Teco M.E..debug.xcconfig"; sourceTree = "<group>"; };
 		93DDFB74F8614CC8E8B7ED3C /* Pods_Teco_M_E_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Teco_M_E_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36BBCB71E92B5D7FFEF0CFF /* Pods-Teco M.E..release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Teco M.E..release.xcconfig"; path = "Pods/Target Support Files/Pods-Teco M.E./Pods-Teco M.E..release.xcconfig"; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				1437C13920750C1600FCA384 /* BaseModel.swift */,
 				14B5E866207D2B6200067ECF /* Languge.swift */,
 				14B5E86A207DD96900067ECF /* Command.swift */,
+				14FD7C28216100AD00E5AB08 /* View.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				1437C09C207509F500FCA384 /* ViewController.swift */,
 				14B5E868207D330300067ECF /* SettingsViewController.swift */,
 				14FBEF882093478500ACDE89 /* TestViewController.swift */,
+				14FD7C2A2161075A00E5AB08 /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 				142344DE20794F39000718AB /* Date+Extension.swift in Sources */,
 				1437C10020750A5000FCA384 /* UITextField.swift in Sources */,
 				142344E420794F39000718AB /* Optional+Extensions.swift in Sources */,
+				14FD7C2B2161075A00E5AB08 /* WebViewController.swift in Sources */,
 				142344E120794F39000718AB /* UIColor+Extensions.swift in Sources */,
 				142344E020794F39000718AB /* UITextView+Extensions.swift in Sources */,
 				1437C10520750A5000FCA384 /* Double.swift in Sources */,
@@ -596,6 +603,7 @@
 				142344DD20794F39000718AB /* UIView+Extensions.swift in Sources */,
 				1437C12320750A6100FCA384 /* AbstractController.swift in Sources */,
 				1437C16820750E0300FCA384 /* AppColors.swift in Sources */,
+				14FD7C29216100AD00E5AB08 /* View.swift in Sources */,
 				142344E320794F39000718AB /* UIAlertController+Extensions.swift in Sources */,
 				1437C0BC20750A4A00FCA384 /* Actions.swift in Sources */,
 				1437C0FE20750A4F00FCA384 /* UIImageViewWithMask.swift in Sources */,

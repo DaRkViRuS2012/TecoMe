@@ -24,7 +24,7 @@ class AppUser: BaseModel {
     public var fullName:String?
     public var homeId:String?
     public var languages:[Language]?
-
+    public var views:[View]?
     
     // MARK: User initializer
     public override init(){
@@ -39,6 +39,9 @@ class AppUser: BaseModel {
         if let array = json[KlanguagesKey].array{
             self.languages = array.map{Language(json:$0)}
         }
+        if let array = json["views"].array{
+            self.views = array.map{View(json:$0)}
+        }
     }
     
     public override func dictionaryRepresentation() -> [String: Any] {
@@ -47,6 +50,9 @@ class AppUser: BaseModel {
         dictionary["id"] = self.UID
         dictionary[KhomeIdKey] = self.homeId
         dictionary[KlanguagesKey] = self.languages?.map{$0.dictionaryRepresentation()}
+        if let array = self.views{
+            dictionary["views"] = array.map{$0.dictionaryRepresentation()}
+        }
         return dictionary
     }
     

@@ -441,6 +441,7 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                 if success{
                     //self.playOkSound()
                     self.response = result
+                    if self.response?.success == 10{
                     if self.response?.result?.count == 1{
                         self.selectedResult = result?.result![0]
                         self.handleResult()
@@ -449,6 +450,12 @@ class ViewController: AbstractController, SFSpeechRecognizerDelegate {
                         self.results = (self.response?.result)!
                         self.showCommnadsView()
                         self.tableView.reloadData()
+                        }
+                    }else if self.response?.success == 4{
+                        if let views = self.response?.views , views.count > 0{
+                            ActionShowWbView.execute(view: views[0])
+                            self.ready()
+                        }
                     }
                 }
                 

@@ -16,6 +16,7 @@ public class Response {
 	public var result : Array<Result>?
 	public var success : Int?
     public var message : String?
+    public var views:[View]?
     
 
 /**
@@ -50,11 +51,18 @@ public class Response {
 */
 	required public init?(json: JSON) {
 
+        success = json["success"].int
+        message = json["messge"].string
+        if success == 10{
         if let array = json["result"].array{
             result = array.map{Result(json:$0)!}
+            }
         }
-		success = json["success"].int
-        message = json["messge"].string
+        if success == 4{
+        if let array = json["result"].array{
+            views = array.map{View(json:$0)}
+        }
+        }
 	}
 
 		

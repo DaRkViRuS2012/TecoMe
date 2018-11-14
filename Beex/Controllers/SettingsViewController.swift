@@ -16,14 +16,19 @@ class SettingsViewController: AbstractController {
     
     @IBOutlet weak var languagesButton: UIButton!
     @IBOutlet weak var switcher: UISwitch!
+    @IBOutlet weak var viewsButton: UIButton!
     
     
     // city dropDown
     var languageDropDown = DropDown()
+    var viewsDropDown = DropDown()
     
     var languages:[Language] = []
     var languagesList:[String] = []
+    var views:[View] = []
+    var viewsList:[String] = []
     var selectedLang:String?
+    var selectedView:View?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +39,9 @@ class SettingsViewController: AbstractController {
         self.languagesButton.setTitle(AppConfig.langCode, for: .normal)
         selectedLang = AppConfig.langCode
         getlanguages()
+        getViews()
         prepareCityDropDown()
+        prepareViewsDropDown()
         switcher.isOn = DataStore.shared.showCommands
       
 //        self.serverTextFeild.text = AppConfig.server ?? ""
@@ -70,6 +77,10 @@ class SettingsViewController: AbstractController {
         toggleDropDown()
     }
     
+    @IBAction func selectcView(_ sender: UIButton) {
+        toggleViewsDropDown()
+    }
+    
     func toggleDropDown(){
         
         if languageDropDown.isHidden {
@@ -83,7 +94,7 @@ class SettingsViewController: AbstractController {
         
         if let langs = DataStore.shared.me?.languages{
             self.languages = langs
-            self.languagesList = languages.map{$0.title!}
+            self.languagesList = languages.map{$0.title ?? ""}
         }
         
     }
@@ -101,7 +112,42 @@ class SettingsViewController: AbstractController {
         }
         
     }
-   
+    
+    
+    //
+    func toggleViewsDropDown(){
+        
+        if viewsDropDown.isHidden {
+            viewsDropDown.show()
+        }else{
+            viewsDropDown.hide()
+        }
+        
+    }
+    func getViews(){
+        
+        if let value = DataStore.shared.me?.views{
+            self.views = value
+            self.viewsList = value.map{$0.title ?? ""}
+        }
+        
+    }
+    
+    
+    
+    func prepareViewsDropDown(){
+        viewsDropDown.anchorView = viewsButton
+        viewsDropDown.dataSource = self.viewsList
+        
+        viewsDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            print("Selected item: \(item) at index: \(index)")
+            self.viewsButton.setTitle(item, for: .normal)
+            self.selectedView = self.views[index]
+            ActionShowWbView.execute(view:self.selectedView!)
+        }
+    }
+    
+    //
     @IBAction func changeShowCommand(_ sender: UISwitch) {
         DataStore.shared.showCommands = sender.isOn
     }

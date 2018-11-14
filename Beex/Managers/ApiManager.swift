@@ -215,6 +215,8 @@ class ApiManager: NSObject {
                         
                     if let code = response?.success ,code == 10{
                         completionBlock(true , nil, response)
+                    }else if let code = response?.success ,code == 4 {
+                        completionBlock(true , nil, response)
                     }else{
 
                         let serverError = ServerError(json: json) ?? ServerError.unknownError

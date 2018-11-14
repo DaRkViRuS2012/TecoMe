@@ -14,7 +14,8 @@ Repeated and generic actions to be excuted from any context of the app such as s
 class Action: NSObject {
     class func execute() {
     }
- 
+    class func execute(view:View) {
+    }
 }
 
 class ActionLogout:Action
@@ -41,5 +42,18 @@ class ActionLogout:Action
 class ActionShowStart: Action {
     override class func execute() {
         UIApplication.appWindow().rootViewController = UIStoryboard.mainStoryboard.instantiateViewController(withIdentifier: StartViewController.className)
+    }
+}
+
+class ActionShowWbView: Action {
+    override class func execute(view:View) {
+        let vc = UIStoryboard.mainStoryboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        guard let url = view.ip , let value = view.varValue,let username = view.username,let password = view.password else{return}
+        let size = ""//AppConfig.getwebSize().rawValue
+        vc.url = "http://\(url)/\(value)\(size).xml"
+        vc.userName = username
+        vc.password = password
+        
+        UIApplication.visibleViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
 }
